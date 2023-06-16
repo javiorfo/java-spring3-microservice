@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_architecture
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+ 
+server:
+  servlet:
+    context-path: /architecture
+
+keycloak:
+  auth-server-url: http://localhost:8081/auth
+  realm: test_realm
+  resource: ms.architecture
+  credentials:
+    secret:
+  cors: true
+  cors-allowed-methods: POST, GET, PUT, DELETE
+  securityConstraints[0]:
+    securityCollections[0]:
+      name: something
+      patterns[0]: /architecture
+    authRoles[0]: ADMIN
