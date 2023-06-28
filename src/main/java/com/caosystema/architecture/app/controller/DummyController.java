@@ -1,7 +1,7 @@
-package com.javiorfo.architecture.app.controller;
+package com.caosystema.architecture.app.controller;
 
-import com.javiorfo.architecture.app.response.DummyResponse;
-import com.javiorfo.architecture.core.service.DummyService;
+import com.caosystema.architecture.app.response.DummyResponse;
+import com.caosystema.architecture.core.service.DummyService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

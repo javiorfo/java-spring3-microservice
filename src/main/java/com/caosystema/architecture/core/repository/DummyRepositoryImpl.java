@@ -1,9 +1,9 @@
-package com.javiorfo.architecture.core.repository;
+package com.caosystema.architecture.core.repository;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import com.javiorfo.architecture.core.dto.DummyDTO;
+import com.caosystema.architecture.core.dto.DummyDTO;
 
 @Repository
 public class DummyRepositoryImpl implements DummyRepository {

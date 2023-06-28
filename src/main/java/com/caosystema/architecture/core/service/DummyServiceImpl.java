@@ -1,8 +1,8 @@
-package com.javiorfo.architecture.core.service;
+package com.caosystema.architecture.core.service;
 
 import org.springframework.stereotype.Service;
-import com.javiorfo.architecture.core.dto.DummyDTO;
-import com.javiorfo.architecture.core.repository.DummyRepository;
+import com.caosystema.architecture.core.dto.DummyDTO;
+import com.caosystema.architecture.core.repository.DummyRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

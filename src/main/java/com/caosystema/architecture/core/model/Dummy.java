@@ -1,4 +1,4 @@
-package com.javiorfo.architecture.core.model;
+package com.caosystema.architecture.core.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
