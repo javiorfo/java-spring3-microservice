@@ -1,4 +1,4 @@
-package com.javiorfo.architecture;
+package com.caosystema.architecture;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
