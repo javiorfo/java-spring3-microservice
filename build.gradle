@@ -3,7 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = 'com.caosystema'
+group = 'com.progrimorio'
 version = '0.0.1'
 
 apply plugin: 'java'
@@ -32,7 +32,10 @@ dependencies {
     // Spring
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+// 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     // DB
     implementation "org.postgresql:postgresql:${postgresVersion}"
