@@ -1,18 +1,23 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/db_architecture
+    url: jdbc:postgresql://localhost:5432/db_orfosys
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
- 
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+
 server:
   servlet:
-    context-path: /architecture
+    context-path: /orfosys
 
 keycloak:
   auth-server-url: http://localhost:8081/auth
   realm: test_realm
-  resource: ms.architecture
+  resource: ms.orfosys
   credentials:
     secret:
   cors: true
@@ -20,5 +25,5 @@ keycloak:
   securityConstraints[0]:
     securityCollections[0]:
       name: something
-      patterns[0]: /architecture
+      patterns[0]: /orfosys
     authRoles[0]: ADMIN

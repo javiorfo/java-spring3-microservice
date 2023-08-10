@@ -1,4 +1,4 @@
-package com.caosystema.architecture.common.exception;
+package com.orfosys.common.exception;
 
 public class DummyException extends RuntimeException {
 

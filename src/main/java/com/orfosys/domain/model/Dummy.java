@@ -1,4 +1,4 @@
-package com.caosystema.architecture.core.model;
+package com.orfosys.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
