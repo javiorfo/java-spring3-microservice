@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/db_orfosys
+    url: jdbc:postgresql://localhost:5432/db_dummy
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver

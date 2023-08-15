@@ -20,5 +20,8 @@ public class DummyEntity {
     private int id;
 
     private String info;
-
+    
+    public DummyEntity(String info) {
+        this.info = info;
+    }
 }

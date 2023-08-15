@@ -1,9 +1,11 @@
 package com.orfosys.adapter.in;
 
 import com.orfosys.application.in.FindDummy;
+import com.orfosys.application.in.SaveDummy;
 import com.orfosys.application.in.request.DummyRequest;
 import com.orfosys.application.out.response.DummyResponse;
 import com.orfosys.common.annotation.WebAdapter;
+import com.orfosys.domain.model.Dummy;
 
 import lombok.AllArgsConstructor;
 
@@ -21,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 public class DummyController {
    
     private final FindDummy findDummy;
+    private final SaveDummy saveDummy;
 
     @GetMapping
     public ResponseEntity<DummyResponse> get() {
@@ -29,6 +32,7 @@ public class DummyController {
 
     @PostMapping
     public ResponseEntity<DummyResponse> save(@RequestBody DummyRequest request) {
-        return ResponseEntity.ok(new DummyResponse(findDummy.findById(1).getInfo()));
+        Dummy dummy = saveDummy.save(new Dummy(request.info())); 
+        return ResponseEntity.ok(new DummyResponse(dummy.getInfo()));
     }
 }

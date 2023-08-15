@@ -2,6 +2,6 @@ package com.orfosys.application.out;
 
 import com.orfosys.domain.model.Dummy;
 
-public interface FindDummyById {
-    public Dummy findById(int id);
+public interface SaveDummyDB {
+    public Dummy save(Dummy dummy);
 }

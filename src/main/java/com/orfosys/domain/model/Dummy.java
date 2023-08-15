@@ -7,8 +7,5 @@ import lombok.Getter;
 public class Dummy {
 
     @Getter
-    private final int id;      
-    
-    @Getter
     private final String info;      
 }
