@@ -24,7 +24,7 @@ public class DummyPersistenceAdapter implements FindDummyDB, SaveDummyDB {
 
     @Override
     public Dummy save(Dummy dummy) {
-        DummyEntity dummyEntity = DummyMapper.domainToEntity(dummy);
+        var dummyEntity = DummyMapper.domainToEntity(dummy);
         dummyEntityRepository.save(dummyEntity);
         return dummy;
     }

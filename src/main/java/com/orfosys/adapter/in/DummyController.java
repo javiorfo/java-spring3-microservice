@@ -32,7 +32,7 @@ public class DummyController {
 
     @PostMapping
     public ResponseEntity<DummyResponse> save(@RequestBody DummyRequest request) {
-        Dummy dummy = saveDummy.save(new Dummy(request.info())); 
+        var dummy = saveDummy.save(new Dummy(request.info())); 
         return ResponseEntity.ok(new DummyResponse(dummy.getInfo()));
     }
 }
