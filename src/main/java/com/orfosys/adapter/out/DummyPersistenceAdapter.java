@@ -1,7 +1,7 @@
 package com.orfosys.adapter.out;
 
-import com.orfosys.application.out.FindDummyDB;
-import com.orfosys.application.out.SaveDummyDB;
+import com.orfosys.application.out.FindDummy;
+import com.orfosys.application.out.SaveDummy;
 import com.orfosys.common.annotation.PersistenceAdapter;
 import com.orfosys.common.exception.DummyException;
 import com.orfosys.domain.model.Dummy;
@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 
 @PersistenceAdapter
 @AllArgsConstructor
-public class DummyPersistenceAdapter implements FindDummyDB, SaveDummyDB {
+public class DummyPersistenceAdapter implements FindDummy, SaveDummy {
     
     private final DummyEntityRepository dummyEntityRepository;
 
@@ -25,7 +25,7 @@ public class DummyPersistenceAdapter implements FindDummyDB, SaveDummyDB {
     @Override
     public Dummy save(Dummy dummy) {
         var dummyEntity = DummyMapper.domainToEntity(dummy);
-        dummyEntityRepository.save(dummyEntity);
+        dummy = DummyMapper.entityToDomain(dummyEntityRepository.save(dummyEntity));
         return dummy;
     }
 }

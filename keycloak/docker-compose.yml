@@ -1,7 +1,4 @@
 services:
-#   postgres:
-#     container_name: db_orfosys
-#     image:
   postgres:
     container_name: postgres_keycloak
     image: postgres

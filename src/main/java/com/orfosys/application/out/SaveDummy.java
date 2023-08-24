@@ -1,4 +1,4 @@
-package com.orfosys.application.in;
+package com.orfosys.application.out;
 
 import com.orfosys.domain.model.Dummy;
 

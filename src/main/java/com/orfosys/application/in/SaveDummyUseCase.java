@@ -1,7 +1,7 @@
-package com.orfosys.application.out;
+package com.orfosys.application.in;
 
 import com.orfosys.domain.model.Dummy;
 
-public interface SaveDummyDB {
+public interface SaveDummyUseCase {
     public Dummy save(Dummy dummy);
 }

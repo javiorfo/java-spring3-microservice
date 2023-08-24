@@ -24,4 +24,12 @@ public class DummyPersistenceTest {
 
         assertThat(dummy.getInfo()).isEqualTo("dummy 1");
     }
+
+    @Test
+    public void save() {
+        var dummy = new Dummy("saved");
+        dummy = dummyPersistenceAdapter.save(dummy);
+
+        assertThat(dummy.getInfo()).isEqualTo("saved");
+    }
 }

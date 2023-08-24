@@ -52,6 +52,8 @@ dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
     testImplementation "com.tngtech.archunit:archunit:${archunitVersion}"
     testImplementation 'com.h2database:h2'
+
+    runtimeOnly 'com.h2database:h2'
 }
 
 dependencyManagement {
