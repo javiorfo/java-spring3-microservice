@@ -15,6 +15,10 @@ java {
 	targetCompatibility = '17'
 }
 
+jar {
+    enabled = false
+}
+
 repositories {
 	mavenCentral()
 }
@@ -23,7 +27,7 @@ ext {
 	set('keycloakVersion', '21.1.1')
 	set('postgresVersion', '42.6.0')
 	set('junitJupiterVersion', '5.9.3')
-	set('archunitVersion', '1.0.1')
+// 	set('archunitVersion', '1.0.1')
 	set('mockitoVersion', '5.3.1')
 }
 
@@ -50,7 +54,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
     testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
-    testImplementation "com.tngtech.archunit:archunit:${archunitVersion}"
+//     testImplementation "com.tngtech.archunit:archunit:${archunitVersion}"
     testImplementation 'com.h2database:h2'
 
     runtimeOnly 'com.h2database:h2'
