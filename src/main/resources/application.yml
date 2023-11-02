@@ -12,12 +12,12 @@ spring:
 
 server:
   servlet:
-    context-path: /orfosys
+    context-path: /app
 
 keycloak:
   auth-server-url: http://localhost:8081/auth
   realm: test_realm
-  resource: ms.orfosys
+  resource: ms.jo
   credentials:
     secret:
   cors: true
@@ -25,5 +25,5 @@ keycloak:
   securityConstraints[0]:
     securityCollections[0]:
       name: something
-      patterns[0]: /orfosys
+      patterns[0]: /app
     authRoles[0]: ADMIN
