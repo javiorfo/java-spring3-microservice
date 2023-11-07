@@ -12,9 +12,9 @@ import static org.mockito.BDDMockito.*;
 
 public class DummyServiceTest {
     
-    private final FindDummy findDummyDB = Mockito.mock(FindDummy.class);
-    private final SaveDummy saveDummyDB = Mockito.mock(SaveDummy.class);
-    private final DummyService dummyService = new DummyService(findDummyDB, saveDummyDB);
+    private final FindDummy findDummy= Mockito.mock(FindDummy.class);
+    private final SaveDummy saveDummy= Mockito.mock(SaveDummy.class);
+    private final DummyService dummyService = new DummyService(findDummy, saveDummy);
 
     @Test
     public void findDummy() {
@@ -22,7 +22,7 @@ public class DummyServiceTest {
 		given(dummy.getInfo())
 				.willReturn("test");
 
-		given(findDummyDB.findById(eq(1)))
+		given(findDummy.findById(eq(1)))
 				.willReturn(dummy);
 
         dummy = dummyService.findById(1);
@@ -36,7 +36,7 @@ public class DummyServiceTest {
 		given(dummy.getInfo())
 				.willReturn("save");
 
-		given(saveDummyDB.save(eq(dummy)))
+		given(saveDummy.save(eq(dummy)))
 				.willReturn(dummy);
 
         dummy = dummyService.save(dummy);

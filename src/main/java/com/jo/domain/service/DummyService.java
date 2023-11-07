@@ -16,18 +16,18 @@ import com.jo.application.out.SaveDummy;
 @Slf4j
 public class DummyService implements FindDummyUseCase, SaveDummyUseCase {
 
-    private final FindDummy findDummyDB;
-    private final SaveDummy saveDummyDB;
+    private final FindDummy findDummy;
+    private final SaveDummy saveDummy;
 
     @Override
     public Dummy findById(int id) {
         log.info("Searching dummy by id: " + id);
-        return this.findDummyDB.findById(id);
+        return this.findDummy.findById(id);
     }
 
     @Override
     public Dummy save(Dummy dummy) {
         log.info("Saving dummy: " + dummy);
-        return this.saveDummyDB.save(dummy);
+        return this.saveDummy.save(dummy);
     } 
 }
