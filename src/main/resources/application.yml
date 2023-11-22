@@ -10,11 +10,11 @@ spring:
     hibernate:
       ddl-auto: create-drop
   security:
-    resourceserver:
-      oauth2:
+    oauth2:
+      resourceserver:
         jwt:
           issuer-uri: http://localhost:8081/realms/JO
-          jwk-set-uti: ${spring.security.resourceserver.oauth2.jwt.issuer-uri}/protocol/openid-connect/certs
+          jwk-set-uri: http://localhost:8081/realms/JO/protocol/openid-connect/certs
 
 server:
   servlet:
