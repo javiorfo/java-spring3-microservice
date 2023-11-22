@@ -9,21 +9,13 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
+  security:
+    resourceserver:
+      oauth2:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/JO
+          jwk-set-uti: ${spring.security.resourceserver.oauth2.jwt.issuer-uri}/protocol/openid-connect/certs
 
 server:
   servlet:
     context-path: /app
-
-keycloak:
-  auth-server-url: http://localhost:8081/auth
-  realm: test_realm
-  resource: ms.jo
-  credentials:
-    secret:
-  cors: true
-  cors-allowed-methods: POST, GET, PUT, DELETE
-  securityConstraints[0]:
-    securityCollections[0]:
-      name: something
-      patterns[0]: /app
-    authRoles[0]: ADMIN
