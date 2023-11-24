@@ -1,3 +1,3 @@
-package com.jo.application.out.response;
+package com.jo.application.in.response;
 
 public record DummyResponse(String info){}
