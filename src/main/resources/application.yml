@@ -16,6 +16,15 @@ spring:
           issuer-uri: http://localhost:8081/realms/JO
           jwk-set-uri: http://localhost:8081/realms/JO/protocol/openid-connect/certs
 
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+
 server:
   servlet:
     context-path: /app

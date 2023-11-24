@@ -37,13 +37,16 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
             .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+            .authorizeHttpRequests(auth -> auth.requestMatchers("/doc/swagger-ui/**","/public/**", "/doc/swagger-ui.html", "/v3/api-docs/**", "/hook/**", "/**/swagger.json").permitAll()
+                    .requestMatchers("/app/**").hasRole( "ADMIN")
+                    .anyRequest().authenticated()
+            )
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
             .sessionManagement(session -> session.sessionCreationPolicy(STATELESS));
 
-        return http.build();
+        return httpSecurity.build();
     }
 }
