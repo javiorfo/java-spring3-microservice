@@ -3,7 +3,7 @@ package com.jo.adapter.in;
 import com.jo.application.in.FindDummyUseCase;
 import com.jo.application.in.SaveDummyUseCase;
 import com.jo.application.in.request.DummyRequest;
-import com.jo.application.out.response.DummyResponse;
+import com.jo.application.in.response.DummyResponse;
 import com.jo.common.annotation.WebAdapter;
 import com.jo.domain.model.Dummy;
 
