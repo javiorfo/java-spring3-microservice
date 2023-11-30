@@ -1,8 +1,9 @@
 package com.jo.adapter.in;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -12,8 +13,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.jo.application.in.FindDummyUseCase;
 import com.jo.application.in.SaveDummyUseCase;
+import com.jo.domain.model.Dummy;
 
-@WebMvcTest(controllers = DummyController.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
+@WebMvcTest(controllers = DummyController.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class DummyControllerTest {
     
     @Autowired
@@ -27,11 +30,12 @@ public class DummyControllerTest {
 
 	@Test
 	void findDummy() throws Exception {
+        Mockito.when(findDummyUseCase.findById(1)).thenReturn(new Dummy("dummy"));
 
-/* 		mockMvc.perform(get("/app/dummy/{id}", 1)
+		mockMvc.perform(get("/dummy/{id}", 1)
 				.header("Content-Type", "application/json"))
 				.andExpect(status().isOk());
 
-		then(findDummyUseCase).should().findById(eq(1)); */
+		then(findDummyUseCase).should().findById(eq(1));
 	}
 }

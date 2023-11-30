@@ -1,5 +1,8 @@
 package com.jo.adapter.out;
 
+import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
 import com.jo.application.out.FindDummy;
 import com.jo.application.out.SaveDummy;
 import com.jo.common.annotation.PersistenceAdapter;
@@ -10,6 +13,7 @@ import lombok.AllArgsConstructor;
 
 @PersistenceAdapter
 @AllArgsConstructor
+@EnableJpaRepositories(repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
 public class DummyPersistenceAdapter implements FindDummy, SaveDummy {
     
     private final DummyEntityRepository dummyEntityRepository;

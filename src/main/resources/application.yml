@@ -9,21 +9,22 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: create-drop
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/JO
+          jwk-set-uri: http://localhost:8081/realms/JO/protocol/openid-connect/certs
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
 
 server:
   servlet:
     context-path: /app
-
-keycloak:
-  auth-server-url: http://localhost:8081/auth
-  realm: test_realm
-  resource: ms.jo
-  credentials:
-    secret:
-  cors: true
-  cors-allowed-methods: POST, GET, PUT, DELETE
-  securityConstraints[0]:
-    securityCollections[0]:
-      name: something
-      patterns[0]: /app
-    authRoles[0]: ADMIN

@@ -1,33 +1,25 @@
 plugins {
     id 'java'
-	id 'org.springframework.boot' version '3.1.5'
+	id 'org.springframework.boot' version '3.2.0'
 	id 'io.spring.dependency-management' version '1.1.3'
-    id 'org.graalvm.buildtools.native' version '0.9.28'
-//     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.4.0'
+//     id 'org.graalvm.buildtools.native' version '0.9.28'
 }
 
 group = 'com.jo'
 version = '0.0.1'
 
-// apply plugin: 'java'
-// apply plugin: 'io.spring.dependency-management'
-// apply plugin: 'java-library'
-
 java {
-// 	sourceCompatibility = '21'
-// 	targetCompatibility = '21'
-    toolchain { 
-        languageVersion = JavaLanguageVersion.of(21) 
-    }
+	sourceCompatibility = '21'
+	targetCompatibility = '21'
 }
 
-graalvmNative {
+/* graalvmNative {
     binaries {
         main {
             buildArgs.add('--enable-preview')
         }
     }
-}
+} */
 
 jar {
     enabled = false
@@ -41,14 +33,16 @@ ext {
 	set('keycloakVersion', '21.1.1')
 	set('postgresVersion', '42.6.0')
 	set('junitJupiterVersion', '5.9.3')
-// 	set('archunitVersion', '1.0.1')
 	set('mockitoVersion', '5.3.1')
+	set('enversVersion', '3.2.0')
+	set('lombokVersion', '1.18.30')
+	set('openapiVersion', '2.2.0')
 }
 
 dependencies {
     // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     // Spring
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -57,27 +51,20 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-docker-compose'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation "org.springframework.data:spring-data-envers:${enversVersion}"
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openapiVersion}"
 
     // Database
     implementation "org.postgresql:postgresql:${postgresVersion}"
-
-    // Keycloak
-	implementation "org.keycloak:keycloak-spring-boot-starter:${keycloakVersion}"
 
     // Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
     testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
-//     testImplementation "com.tngtech.archunit:archunit:${archunitVersion}"
     testImplementation 'com.h2database:h2'
 
     runtimeOnly 'com.h2database:h2'
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
-	}
 }
 
 test {
