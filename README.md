@@ -1,8 +1,8 @@
 # java-archetype-spring3-keycloak
-Basic archetype for Java 17/21 with Spring Boot 3 and Keycloak
+Basic archetype for Java 21 with Spring Boot 3 and Keycloak
 
 ## Features
-- [x] Java 17/21
+- [x] Java 21
 - [x] Spring Boot 3
 - [x] JPA
 - [x] Spring Security
