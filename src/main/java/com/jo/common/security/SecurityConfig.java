@@ -40,11 +40,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
             .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth.requestMatchers("/doc/swagger-ui/**","/public/**", "/doc/swagger-ui.html", "/v3/api-docs/**", "/hook/**", "/**/swagger.json").permitAll()
-                    .requestMatchers("/dummy/**").hasRole( "ADMIN")
+            // TODO revisar este método por el problema de swagger
+            // puede que vaya separado o no se invoque authorizeHttpRequests
+            .authorizeHttpRequests(auth -> auth
+//                      .requestMatchers("/doc/swagger-ui/**","/public/**", "/doc/swagger-ui.html", "/v3/api-docs/**", "/hook/**", "/**/swagger.json").permitAll()
+                    .requestMatchers("/dummy/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
             )
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
+//             .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())))
             .sessionManagement(session -> session.sessionCreationPolicy(STATELESS));
 
         return httpSecurity.build();

@@ -1,0 +1,17 @@
+
+~[BASE]~
+url http://localhost:8081/realms/JO/protocol/openid-connect/token
+method POST
+
+~[HEADERS]~
+accept application/json
+content-type application/x-www-form-urlencoded
+
+~[BODY]~
+grant_type password
+client_id java21-spring3-keycloak
+client_secret gBBimvfsBPukEoRuwiBZd1E3HIYAt1Jh
+username javi
+password javi
+
+
