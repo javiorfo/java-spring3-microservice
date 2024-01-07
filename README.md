@@ -1,8 +1,8 @@
-# java21-spring3-keycloak
-Clean architecture, Java 21, Spring Boot 3 and Keycloak (Work In Progress)
+# java-spring3-keycloak
+Clean architecture, Java 17, Spring Boot 3 and Keycloak (Work In Progress)
 
 ## Features
-- [x] Java 21
+- [x] Java 17
 - [x] Spring Boot 3
 - [x] JPA
 - [x] Spring Security
