@@ -14,17 +14,31 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8081/realms/JO
-          jwk-set-uri: http://localhost:8081/realms/JO/protocol/openid-connect/certs
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+jwt:
+  keycloak:
+    client-id: java-spring3-keycloak
 
 springdoc:
   api-docs:
     enabled: true
   swagger-ui:
     enabled: true
-    path: /doc/swagger-ui.html
+    oauth:
+      client-id: ${jwt.keycloak.client-id}
+      client-secret: II0byP4FQDhQazw3nhopjN1UsVJlOfRV
+#     path: /swagger-ui/index.html
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
 
 server:
   servlet:
     context-path: /app
+
+logging:
+  level:
+    org:
+      keycloak: DEBUG
+
+
