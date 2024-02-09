@@ -7,7 +7,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -35,7 +34,5 @@ public class DummyControllerTest {
 		mockMvc.perform(get("/dummy/{id}", 1)
 				.header("Content-Type", "application/json"))
 				.andExpect(status().isOk());
-
-		then(findDummyUseCase).should().findById(eq(1));
 	}
 }

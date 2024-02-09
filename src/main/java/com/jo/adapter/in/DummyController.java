@@ -32,14 +32,13 @@ public class DummyController {
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('CLIENT_ADMIN')")
     public ResponseEntity<DummyResponse> find(@PathVariable("id") int id) {
-//         return ResponseEntity.ok(new DummyResponse(findDummyUseCase.findById(id).getInfo()));
-        return ResponseEntity.ok(new DummyResponse("dummy"));
+        return ResponseEntity.ok(new DummyResponse(findDummyUseCase.findById(id)));
     }
 
     @PostMapping
     @PreAuthorize("hasRole('CLIENT_ADMIN')")
     public ResponseEntity<DummyResponse> save(@RequestBody DummyRequest request) {
         var dummy = saveDummyUseCase.save(new Dummy(request.info())); 
-        return ResponseEntity.ok(new DummyResponse(dummy.getInfo()));
+        return ResponseEntity.ok(new DummyResponse(dummy));
     }
 }

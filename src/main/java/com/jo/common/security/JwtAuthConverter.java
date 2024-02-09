@@ -21,14 +21,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
     @Value("${jwt.keycloak.client-id}")
-    private String clientId;
+    private String keycloakClientId;
 
     @Override
     @SuppressWarnings("unchecked")
     public AbstractAuthenticationToken convert(Jwt jwt) {
         if (jwt.getClaim("resource_access") != null) {
             Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
-            Map<String, Object> client = (Map<String, Object>) resourceAccess.get(clientId);
+            Map<String, Object> client = (Map<String, Object>) resourceAccess.get(keycloakClientId);
             List<String> keycloakRoles = new ObjectMapper().convertValue(client.get("roles"),
                     new TypeReference<List<String>>() {});
             List<GrantedAuthority> roles = keycloakRoles.stream()
