@@ -27,7 +27,7 @@ public class DummyService implements FindDummyUseCase, SaveDummyUseCase {
 
     @Override
     public Dummy save(Dummy dummy) {
-        log.info("Saving dummy: " + dummy);
+        log.info("Saving dummy: " + dummy.toString());
         return this.saveDummy.save(dummy);
     } 
 }

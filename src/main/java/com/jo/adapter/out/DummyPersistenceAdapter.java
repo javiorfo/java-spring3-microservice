@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.jo.application.out.FindDummy;
 import com.jo.application.out.SaveDummy;
 import com.jo.common.annotation.PersistenceAdapter;
-import com.jo.common.exception.DummyException;
+import com.jo.common.exception.NotFoundException;
 import com.jo.domain.model.Dummy;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class DummyPersistenceAdapter implements FindDummy, SaveDummy {
         return dummyEntityRepository
                 .findById(id)
                 .map(DummyMapper::entityToDomain)
-                .orElseThrow(DummyException::new);
+                .orElseThrow(NotFoundException::new);
     }
 
     @Override
