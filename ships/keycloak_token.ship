@@ -10,7 +10,7 @@ content-type application/x-www-form-urlencoded
 ~[BODY]~
 grant_type password
 client_id java-spring3-keycloak
-client_secret oYHXjHA4fu7vpfelIIosZFY00GpVmMpY
+client_secret 8qA36MxkYCbkdpdOpda3prJfUkuqh8CT
 username javi
 password javi
 

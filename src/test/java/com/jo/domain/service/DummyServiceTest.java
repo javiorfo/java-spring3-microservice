@@ -3,7 +3,7 @@ package com.jo.domain.service;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.jo.application.out.FindDummy;
+import com.jo.application.out.QueryDummy;
 import com.jo.application.out.SaveDummy;
 import com.jo.domain.model.Dummy;
 
@@ -12,9 +12,9 @@ import static org.mockito.BDDMockito.*;
 
 public class DummyServiceTest {
     
-    private final FindDummy findDummy= Mockito.mock(FindDummy.class);
+    private final QueryDummy queryDummy= Mockito.mock(QueryDummy.class);
     private final SaveDummy saveDummy= Mockito.mock(SaveDummy.class);
-    private final DummyService dummyService = new DummyService(findDummy, saveDummy);
+    private final DummyService dummyService = new DummyService(queryDummy, saveDummy);
 
     @Test
     public void findDummy() {
@@ -22,7 +22,7 @@ public class DummyServiceTest {
 		given(dummy.getInfo())
 				.willReturn("test");
 
-		given(findDummy.findById(eq(1)))
+		given(queryDummy.findById(eq(1)))
 				.willReturn(dummy);
 
         dummy = dummyService.findById(1);
