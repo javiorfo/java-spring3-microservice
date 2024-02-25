@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-spring3-keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-spring3-keycloak
+  template:
+    metadata:
+      labels:
+        app: java-spring3-keycloak
+    spec:
+      containers:
+      - name: java-spring3-keycloak
+        image: java-spring3-keycloak:0.1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-spring3-keycloak-svc
+spec:
+  selector:
+    app: java-spring3-keycloak
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort
+
