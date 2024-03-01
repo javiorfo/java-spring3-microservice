@@ -1,34 +1,32 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/db_dummy
-    username: admin
-    password: admin
+    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
-    show-sql: true
+    show-sql: ${JPA_SHOW_SQL:true}
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
-#       ddl-auto: create
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8081/realms/JO
+          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/JO
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
-
 jwt:
   keycloak:
     client-id: java-spring3-keycloak
 
 springdoc:
   api-docs:
-    enabled: true
+    enabled: ${SWAGGER_ENABLED:true}
   swagger-ui:
-    enabled: true
+    enabled: ${SWAGGER_ENABLED:true}
     oauth:
       client-id: ${jwt.keycloak.client-id}
-      client-secret: 8qA36MxkYCbkdpdOpda3prJfUkuqh8CT
+      client-secret: ${KEYCLOAK_CLIENT_SECRET}
 #     path: /swagger-ui/index.html
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
@@ -42,4 +40,30 @@ logging:
     org:
       keycloak: DEBUG
 
+---
 
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/db_dummy
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+#       ddl-auto: create
+      ddl-auto: update
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            scripts:
+              action: create
+              create-target: schema.sql
+              create-source: metadata
+    
+springdoc:
+  swagger-ui:
+    oauth:
+      client-secret: 8qA36MxkYCbkdpdOpda3prJfUkuqh8CT

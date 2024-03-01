@@ -61,6 +61,7 @@ test {
 	useJUnitPlatform()
 }
 
-/* tasks.named("bootRun") {
-	sourceResources sourceSets.main
-} */
+task bootRunLocal(type: Exec) {
+    group = 'application'
+    commandLine "gradle", "bootRun", "--args='--spring.profiles.active=local'"
+}

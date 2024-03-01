@@ -12,8 +12,8 @@ import java.util.List;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
+import com.jo.common.pagination.Paginator;
 import com.jo.application.in.QueryDummyUseCase;
 import com.jo.application.in.SaveDummyUseCase;
 import com.jo.application.out.QueryDummy;
@@ -35,8 +35,8 @@ public class DummyService implements QueryDummyUseCase, SaveDummyUseCase {
 
     @Override
     public ImmutablePair<Pagination, List<Dummy>> findAll(int page, int size, String sortBy, String sortOrder) {
-        Sort sort = Sort.by(sortOrder.equalsIgnoreCase("asc") ? Sort.Order.asc(sortBy) : Sort.Order.desc(sortBy));
-        Pageable pageable = PageRequest.of(page, size, sort);
+        log.info("Searching dummies");
+        Pageable pageable = PageRequest.of(page, size, Paginator.createSort(sortBy, sortOrder));
         return queryDummy.findAll(pageable);
     }
 

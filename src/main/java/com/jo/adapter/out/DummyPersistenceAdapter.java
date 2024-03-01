@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.jo.adapter.out.utils.Paginator;
+import com.jo.common.pagination.Paginator;
 import com.jo.application.out.QueryDummy;
 import com.jo.application.out.SaveDummy;
 import com.jo.common.annotation.PersistenceAdapter;

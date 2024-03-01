@@ -7,18 +7,19 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.jo.domain.model.Dummy;
 
-
-@DataJpaTest
-@Import({DummyPersistenceAdapter.class, DummyMapper.class})
-@Sql(scripts = { "schema.sql", "db.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_CLASS)
+@DataJpaTest(properties = {
+        "spring.datasource.url=jdbc:h2:mem:testdb",
+        "spring.jpa.hibernate.ddl-auto=create-drop"
+})
+@Import({ DummyPersistenceAdapter.class, DummyMapper.class })
+@Sql("db.sql")
 public class DummyPersistenceTest {
-    
+
     @Autowired
     private DummyPersistenceAdapter dummyPersistenceAdapter;
 

@@ -1,10 +1,11 @@
-package com.jo.adapter.out.utils;
+package com.jo.common.pagination;
 
 import java.util.List;
 import java.util.function.Function;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 
 import com.jo.common.response.Pagination;
 
@@ -16,5 +17,9 @@ public class Paginator {
         var total = page.getTotalElements();
         var pagination = new Pagination(pageNumber, pageSize, total);
         return new ImmutablePair<>(pagination, content); 
+    }
+
+    public static Sort createSort(String sortBy, String sortOrder) {
+        return Sort.by(sortOrder.equalsIgnoreCase("asc") ? Sort.Order.asc(sortBy) : Sort.Order.desc(sortBy));
     }
 }

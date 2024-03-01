@@ -18,6 +18,15 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
+        env:
+          - name: DB_HOST
+            value: postgresql
+          - name: DB_NAME
+            value: db_dummy
+          - name: DB_USER
+            value: admin
+          - name: DB_PASSWORD
+            value: admin
 ---
 apiVersion: v1
 kind: Service
