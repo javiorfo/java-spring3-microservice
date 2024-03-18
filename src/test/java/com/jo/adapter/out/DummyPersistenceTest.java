@@ -36,7 +36,7 @@ public class DummyPersistenceTest {
 
         var result = dummyPersistenceAdapter.findAll(pageable);
 
-        assertThat(result.getRight().size()).isEqualTo(2);
+        assertThat(result.results().size()).isEqualTo(2);
     }
 
     @Test

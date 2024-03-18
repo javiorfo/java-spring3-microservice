@@ -3,20 +3,21 @@ package com.jo.common.pagination;
 import java.util.List;
 import java.util.function.Function;
 
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
 import com.jo.common.response.Pagination;
 
 public class Paginator {
-    public static <T, R> ImmutablePair<Pagination, List<R>> create(Page<T> page, Function<T, R> mapper) {
+    public record Pair<T>(Pagination pagination, List<T> results) {}
+
+    public static <T, R> Pair<R> create(Page<T> page, Function<T, R> mapper) {
         var content = page.getContent().stream().map(mapper).toList();
         var pageNumber = page.getPageable().getPageNumber();
         var pageSize = page.getPageable().getPageSize();
         var total = page.getTotalElements();
         var pagination = new Pagination(pageNumber, pageSize, total);
-        return new ImmutablePair<>(pagination, content); 
+        return new Pair<R>(pagination, content);
     }
 
     public static Sort createSort(String sortBy, String sortOrder) {

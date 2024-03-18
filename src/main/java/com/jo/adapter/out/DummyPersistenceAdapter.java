@@ -1,8 +1,5 @@
 package com.jo.adapter.out;
 
-import java.util.List;
-
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -12,7 +9,6 @@ import com.jo.application.out.QueryDummy;
 import com.jo.application.out.SaveDummy;
 import com.jo.common.annotation.PersistenceAdapter;
 import com.jo.common.exception.NotFoundException;
-import com.jo.common.response.Pagination;
 import com.jo.domain.model.Dummy;
 
 import lombok.AllArgsConstructor;
@@ -40,7 +36,7 @@ public class DummyPersistenceAdapter implements QueryDummy, SaveDummy {
     }
 
     @Override
-    public ImmutablePair<Pagination, List<Dummy>> findAll(Pageable pageable) {
+    public Paginator.Pair<Dummy> findAll(Pageable pageable) {
         var page = dummyEntityRepository.findAll(pageable);
         return Paginator.create(page, DummyMapper::entityToDomain);
     }

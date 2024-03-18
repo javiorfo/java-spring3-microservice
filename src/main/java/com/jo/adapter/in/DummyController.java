@@ -44,8 +44,8 @@ public class DummyController {
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sortBy,
             @RequestParam(defaultValue = "asc") String sortOrder) {
-        var paginationElements = queryDummyUseCase.findAll(page, size, sortBy, sortOrder);
-        var response = new RestResponsePagination<>(paginationElements.left, paginationElements.right);
+        var pageElements = queryDummyUseCase.findAll(page, size, sortBy, sortOrder);
+        var response = new RestResponsePagination<>(pageElements.pagination(), pageElements.results());
         return ResponseEntity.ok(response);
     }
 
