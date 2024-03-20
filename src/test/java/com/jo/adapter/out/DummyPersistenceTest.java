@@ -27,7 +27,7 @@ public class DummyPersistenceTest {
     public void findById() {
         var dummy = dummyPersistenceAdapter.findById(1);
 
-        assertThat(dummy.getInfo()).isEqualTo("dummy 1");
+        assertThat(dummy.info()).isEqualTo("dummy 1");
     }
 
     @Test
@@ -44,6 +44,6 @@ public class DummyPersistenceTest {
         var dummy = new Dummy("saved");
         dummy = dummyPersistenceAdapter.save(dummy);
 
-        assertThat(dummy.getInfo()).isEqualTo("saved");
+        assertThat(dummy.info()).isEqualTo("saved");
     }
 }

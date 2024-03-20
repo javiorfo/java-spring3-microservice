@@ -9,6 +9,6 @@ public class DummyMapper {
     }
 
     public static DummyEntity domainToEntity(Dummy dummy) {
-        return new DummyEntity(dummy.getInfo());
+        return new DummyEntity(dummy.info());
     }
 }

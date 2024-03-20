@@ -1,6 +1,7 @@
 package com.jo.common.pagination;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
 
 import org.springframework.data.domain.Page;
@@ -9,8 +10,13 @@ import org.springframework.data.domain.Sort;
 import com.jo.common.response.Pagination;
 
 public class Paginator {
-    public record Pair<T>(Pagination pagination, List<T> results) {}
-
+    public record Pair<T>(Pagination pagination, List<T> results) {
+        public Pair {
+            pagination = Objects.requireNonNull(pagination);
+        }
+    }
+    
+    // TODO test no results
     public static <T, R> Pair<R> create(Page<T> page, Function<T, R> mapper) {
         var content = page.getContent().stream().map(mapper).toList();
         var pageNumber = page.getPageable().getPageNumber();

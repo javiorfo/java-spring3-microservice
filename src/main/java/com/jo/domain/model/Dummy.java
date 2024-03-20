@@ -1,13 +1,9 @@
 package com.jo.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import java.util.Objects;
 
-@AllArgsConstructor
-@ToString
-public class Dummy {
-
-    @Getter
-    private final String info;      
+public record Dummy(String info) {
+    public Dummy {
+        info = Objects.requireNonNull(info);
+    }
 }

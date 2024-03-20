@@ -19,7 +19,7 @@ public class DummyServiceTest {
     @Test
     public void findDummy() {
         Dummy dummy = Mockito.mock(Dummy.class);
-		given(dummy.getInfo())
+		given(dummy.info())
 				.willReturn("test");
 
 		given(queryDummy.findById(eq(1)))
@@ -33,7 +33,7 @@ public class DummyServiceTest {
     @Test
     public void saveDummy() {
         Dummy dummy = Mockito.mock(Dummy.class);
-		given(dummy.getInfo())
+		given(dummy.info())
 				.willReturn("save");
 
 		given(saveDummy.save(eq(dummy)))
@@ -41,6 +41,6 @@ public class DummyServiceTest {
 
         dummy = dummyService.save(dummy);
 
-        assertThat(dummy.getInfo()).isEqualTo("save");
+        assertThat(dummy.info()).isEqualTo("save");
     }
 }
