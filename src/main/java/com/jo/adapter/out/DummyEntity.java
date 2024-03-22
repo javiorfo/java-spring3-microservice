@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "dummies")
 @Audited
+@Entity(name = "dummies")
 public class DummyEntity {
 
     @Id

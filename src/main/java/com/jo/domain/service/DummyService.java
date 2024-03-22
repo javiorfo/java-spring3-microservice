@@ -25,7 +25,7 @@ public class DummyService implements QueryDummyUseCase, SaveDummyUseCase {
 
     @Override
     public Dummy findById(int id) {
-        log.info("Searching dummy by id: " + id);
+        log.info("Searching dummy by id: {}", id);
         return this.queryDummy.findById(id);
     }
 
@@ -38,7 +38,7 @@ public class DummyService implements QueryDummyUseCase, SaveDummyUseCase {
 
     @Override
     public Dummy save(Dummy dummy) {
-        log.info("Saving dummy: " + dummy.toString());
+        log.info("Saving dummy: {}", dummy.toString());
         return this.saveDummy.save(dummy);
     } 
 }
