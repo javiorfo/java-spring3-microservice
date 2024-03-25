@@ -5,7 +5,7 @@ plugins {
     id 'org.graalvm.buildtools.native' version '0.9.28'
 }
 
-group = 'com.jo'
+group = 'com.orfosys'
 version = '0.0.1'
 
 java {
