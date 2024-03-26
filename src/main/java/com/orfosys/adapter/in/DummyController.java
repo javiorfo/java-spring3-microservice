@@ -1,6 +1,6 @@
 package com.orfosys.adapter.in;
 
-import com.orfosys.application.in.QueryDummyUseCase;
+import com.orfosys.application.in.FindDummyUseCase;
 import com.orfosys.application.in.SaveDummyUseCase;
 import com.orfosys.application.in.request.DummyRequest;
 import com.orfosys.application.in.response.DummyResponse;
@@ -28,13 +28,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @SecurityRequirement(name = "Keycloak")
 public class DummyController {
 
-    private final QueryDummyUseCase queryDummyUseCase;
+    private final FindDummyUseCase findDummyUseCase;
     private final SaveDummyUseCase saveDummyUseCase;
 
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('CLIENT_ADMIN')")
     public ResponseEntity<DummyResponse> find(@PathVariable("id") int id) {
-        return ResponseEntity.ok(new DummyResponse(queryDummyUseCase.findById(id)));
+        return ResponseEntity.ok(new DummyResponse(findDummyUseCase.findById(id)));
     }
 
     @GetMapping
@@ -44,7 +44,7 @@ public class DummyController {
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sortBy,
             @RequestParam(defaultValue = "asc") String sortOrder) {
-        var pageElements = queryDummyUseCase.findAll(page, size, sortBy, sortOrder);
+        var pageElements = findDummyUseCase.findAll(page, size, sortBy, sortOrder);
         var response = new RestResponsePagination<>(pageElements.pagination(), pageElements.results());
         return ResponseEntity.ok(response);
     }

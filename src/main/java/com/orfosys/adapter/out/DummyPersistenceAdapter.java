@@ -5,8 +5,8 @@ import org.springframework.data.envers.repository.support.EnversRevisionReposito
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.orfosys.common.pagination.Paginator;
-import com.orfosys.application.out.QueryDummy;
-import com.orfosys.application.out.SaveDummy;
+import com.orfosys.application.out.FindDummyPersistence;
+import com.orfosys.application.out.SaveDummyPersistence;
 import com.orfosys.common.annotation.PersistenceAdapter;
 import com.orfosys.common.exception.NotFoundException;
 import com.orfosys.domain.model.Dummy;
@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 @PersistenceAdapter
 @AllArgsConstructor
 @EnableJpaRepositories(repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
-public class DummyPersistenceAdapter implements QueryDummy, SaveDummy {
+public class DummyPersistenceAdapter implements FindDummyPersistence, SaveDummyPersistence {
     
     private final DummyEntityRepository dummyEntityRepository;
 
