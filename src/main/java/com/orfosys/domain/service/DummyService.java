@@ -1,6 +1,7 @@
 package com.orfosys.domain.service;
 
 import com.orfosys.common.annotation.UseCase;
+import com.orfosys.common.exception.NotFoundException;
 import com.orfosys.domain.model.Dummy;
 
 import lombok.AllArgsConstructor;
@@ -20,25 +21,25 @@ import com.orfosys.application.out.SaveDummyPersistence;
 @Slf4j
 public class DummyService implements FindDummyUseCase, SaveDummyUseCase {
 
-    private final FindDummyPersistence findDummy;
-    private final SaveDummyPersistence saveDummy;
+    private final FindDummyPersistence findDummyPersistence;
+    private final SaveDummyPersistence saveDummyPersistence;
 
     @Override
     public Dummy findById(int id) {
         log.info("Searching dummy by id: {}", id);
-        return this.findDummy.findById(id);
+        return this.findDummyPersistence.findById(id).orElseThrow(NotFoundException::new);
     }
 
     @Override
     public Paginator.Pair<Dummy> findAll(int page, int size, String sortBy, String sortOrder) {
         log.info("Searching dummies");
         Pageable pageable = PageRequest.of(page, size, Paginator.createSort(sortBy, sortOrder));
-        return findDummy.findAll(pageable);
+        return findDummyPersistence.findAll(pageable);
     }
 
     @Override
     public Dummy save(Dummy dummy) {
         log.info("Saving dummy: {}", dummy.toString());
-        return this.saveDummy.save(dummy);
+        return this.saveDummyPersistence.save(dummy);
     } 
 }
