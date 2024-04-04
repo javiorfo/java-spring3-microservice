@@ -17,7 +17,10 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Component
+@Slf4j
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
     @Value("${jwt.keycloak.client-id}")
@@ -37,6 +40,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
 
             return new JwtAuthenticationToken(jwt, roles);
         }
+        log.error("No roles assigned");
         return new JwtAuthenticationToken(jwt, Collections.emptyList());
     }
 }

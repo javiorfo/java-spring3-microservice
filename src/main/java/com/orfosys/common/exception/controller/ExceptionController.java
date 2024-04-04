@@ -35,14 +35,12 @@ public class ExceptionController {
 
     private ResponseEntity<RestResponseHeader> response(BackEndException backEndException) {
         var error = backEndException.getError();
-        // TODO traza
-        var restResponseHeader = new RestResponseHeader(null, List.of(error));
+        var restResponseHeader = new RestResponseHeader(List.of(error));
         return new ResponseEntity<RestResponseHeader>(restResponseHeader, error.httpStatus());
     }
 
     private ResponseEntity<RestResponseHeader> response(BackEndListException backEndListException) {
-        // TODO traza
-        var restResponseHeader = new RestResponseHeader(null, backEndListException.getErrors());
+        var restResponseHeader = new RestResponseHeader(backEndListException.getErrors());
         return new ResponseEntity<RestResponseHeader>(restResponseHeader, backEndListException.getHttpStatus());
     }
 }

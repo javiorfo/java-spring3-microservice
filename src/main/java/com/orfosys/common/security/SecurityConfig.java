@@ -48,11 +48,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                         .anyRequest().authenticated())
-                .exceptionHandling(ex -> ex.authenticationEntryPoint(authEntryPoint)
-                        .accessDeniedHandler(keycloakAccessDeniedHandler))
+                .exceptionHandling(ex -> ex.accessDeniedHandler(keycloakAccessDeniedHandler))
                 .formLogin(form -> form.failureHandler(keycloakAuthenticationFailureHandler))
                 .oauth2ResourceServer(
-                        oauth2 -> oauth2.jwt(configurer -> configurer.jwtAuthenticationConverter(jwtAuthConverter)))
+                        oauth2 -> oauth2.jwt(configurer -> configurer.jwtAuthenticationConverter(jwtAuthConverter)).authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS));
 
         return httpSecurity.build();

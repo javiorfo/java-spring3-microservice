@@ -16,21 +16,23 @@ import com.orfosys.common.response.RestResponseHeader;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class KeycloakAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) throws IOException, ServletException {
-        // TODO trace
-        var restResponseHeader = new RestResponseHeader("trace", List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "code", "desc")));
+        var restResponseHeader = new RestResponseHeader(
+                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "AUTH_FAILED", "Authentication failure.")));
+        log.error("Authentication failure");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         OutputStream responseStream = response.getOutputStream();
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(responseStream, restResponseHeader);
         responseStream.flush();
-
     }
 }

@@ -16,7 +16,6 @@ public class Paginator {
         }
     }
     
-    // TODO test no results
     public static <T, R> Pair<R> create(Page<T> page, Function<T, R> mapper) {
         var content = page.getContent().stream().map(mapper).toList();
         var pageNumber = page.getPageable().getPageNumber();

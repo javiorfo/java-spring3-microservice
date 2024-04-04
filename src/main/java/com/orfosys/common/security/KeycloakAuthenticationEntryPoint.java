@@ -16,16 +16,20 @@ import com.orfosys.common.response.RestResponseHeader;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
 @Component("keycloakAuthenticationEntryPoint")
+@Slf4j
 public class KeycloakAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) 
-      throws IOException, ServletException {
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+            AuthenticationException authException)
+            throws IOException, ServletException {
 
-        // TODO trace
-        var restResponseHeader = new RestResponseHeader("trace", List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "code", "desc")));
+        var restResponseHeader = new RestResponseHeader(
+                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "INVALID_TOKEN", "Invalid token.")));
+        log.error("Invalid token");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         OutputStream responseStream = response.getOutputStream();

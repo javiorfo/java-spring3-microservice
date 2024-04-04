@@ -41,7 +41,16 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-devtools"
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+
+    // Tracing
+    implementation "io.micrometer:micrometer-tracing-bridge-otel"
+    implementation "io.opentelemetry:opentelemetry-exporter-otlp"
+
+    // Auditory
     implementation "org.springframework.data:spring-data-envers:${enversVersion}"
+
+    // Swagger
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openapiVersion}"
 
     // Database
@@ -52,7 +61,6 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
     testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
     testImplementation "com.h2database:h2"
-
     runtimeOnly "com.h2database:h2"
 }
 

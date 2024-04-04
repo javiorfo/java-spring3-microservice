@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: orfosys
   threads:
     virtual:
       enabled: true
@@ -16,8 +18,15 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8082}/realms/orfosys
+          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/orfosys
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+  sleuth:
+    otel:
+      config:
+        trace-id-ratio-based: 1.0
+      exporter:
+        otlp:
+          endpoint: http://localhost:4317
 jwt:
   keycloak:
     client-id: java-spring3-keycloak
@@ -36,12 +45,19 @@ springdoc:
 
 server:
   servlet:
-    context-path: /app
+    context-path: /orfosys
+
+tracing:
+  url: ${TRACING_HOST:http://localhost:4318}/v1/traces
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
 
 logging:
-  level:
-    org:
-      keycloak: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
 
 ---
 
@@ -55,8 +71,8 @@ spring:
     password: admin
   jpa:
     hibernate:
-#       ddl-auto: create
-      ddl-auto: update
+      ddl-auto: create
+#       ddl-auto: update
     properties:
       javax:
         persistence:
@@ -69,4 +85,4 @@ spring:
 springdoc:
   swagger-ui:
     oauth:
-      client-secret: 8qA36MxkYCbkdpdOpda3prJfUkuqh8CT
+      client-secret: RqaTlO0d2OnBbeRuImNnbLWm5yZL66Mo
