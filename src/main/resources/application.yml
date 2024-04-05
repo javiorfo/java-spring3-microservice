@@ -1,6 +1,6 @@
 spring:
   application:
-    name: orfosys
+    name: java-spring3-keycloak
   threads:
     virtual:
       enabled: true
@@ -20,16 +20,9 @@ spring:
         jwt:
           issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/orfosys
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
-  sleuth:
-    otel:
-      config:
-        trace-id-ratio-based: 1.0
-      exporter:
-        otlp:
-          endpoint: http://localhost:4317
-jwt:
-  keycloak:
-    client-id: java-spring3-keycloak
+  devtools:
+    restart:
+      enabled: false
 
 springdoc:
   api-docs:
@@ -37,7 +30,7 @@ springdoc:
   swagger-ui:
     enabled: ${SWAGGER_ENABLED:true}
     oauth:
-      client-id: ${jwt.keycloak.client-id}
+      client-id: ${spring.application.name}
       client-secret: ${KEYCLOAK_CLIENT_SECRET}
 #     path: /swagger-ui/index.html
   default-consumes-media-type: application/json
@@ -81,7 +74,10 @@ spring:
               action: create
               create-target: schema.sql
               create-source: metadata
-    
+  devtools:
+    restart:
+      enabled: true
+
 springdoc:
   swagger-ui:
     oauth:

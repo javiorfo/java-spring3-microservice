@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
-    @Value("${jwt.keycloak.client-id}")
+    @Value("${spring.application.name}")
     private String keycloakClientId;
 
     @Override
