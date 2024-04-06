@@ -17,20 +17,20 @@ import com.orfosys.domain.model.Dummy;
         "spring.jpa.hibernate.ddl-auto=create-drop"
 })
 @Import({ DummyPersistenceAdapter.class, DummyMapper.class })
-@Sql("db.sql")
 public class DummyPersistenceTest {
 
     @Autowired
     private DummyPersistenceAdapter dummyPersistenceAdapter;
 
     @Test
+    @Sql("db.sql")
     public void findById() {
         var dummy = dummyPersistenceAdapter.findById(1);
-
         assertThat(dummy.get().info()).isEqualTo("dummy 1");
     }
 
     @Test
+    @Sql("db.sql")
     public void findAll() {
         var pageable = PageRequest.of(0, 10, Sort.by(Sort.Order.asc("id")));
 

@@ -1,5 +1,6 @@
 services:
   jaeger:
+    container_name: jaeger
     image: jaegertracing/all-in-one:latest
     ports:
       - 4318:4318

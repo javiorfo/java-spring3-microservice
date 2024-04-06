@@ -66,9 +66,13 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+/*     testLogging {
+        events 'passed', 'skipped', 'failed'
+        showStandardStreams = true
+    } */
 }
 
-task bootRunLocal(type: Exec) {
+task bootRunDev(type: Exec) {
     group = 'application'
-    commandLine "gradle", "bootRun", "--args='--spring.profiles.active=local'"
+    commandLine "gradle", "bootRun", "--args='--spring.profiles.active=dev'"
 }

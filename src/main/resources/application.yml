@@ -54,26 +54,28 @@ logging:
 
 ---
 
+# Use this profile with "gradle bootRunDev"
 spring:
   config:
     activate:
-      on-profile: local
+      on-profile: dev
   datasource:
     url: jdbc:postgresql://localhost:5432/db_dummy
     username: admin
     password: admin
   jpa:
     hibernate:
-      ddl-auto: create
-#       ddl-auto: update
-    properties:
-      javax:
-        persistence:
-          schema-generation:
-            scripts:
-              action: create
-              create-target: schema.sql
-              create-source: metadata
+#       ddl-auto: create
+      ddl-auto: update
+#     properties:
+#       javax:
+#         persistence:
+#           schema-generation:
+#             create-source: metadata
+#             scripts:
+#               action: create
+#               create-target: schema.sql
+#               create-script-source: metadata
   devtools:
     restart:
       enabled: true
