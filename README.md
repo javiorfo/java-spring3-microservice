@@ -27,13 +27,13 @@ Hexagonal architecture, Java 21, Spring Boot 3 and Keycloak
     - H2 for Test
 
 ## Files
-- [Docker files](https://github.com/orfosys/java-spring3-keycloak/tree/master/docker)
-- [Kubernetes files](https://github.com/orfosys/java-spring3-keycloak/tree/master/k8s)
-- [Ship files](https://github.com/orfosys/java-spring3-keycloak/tree/master/ships)
-    - For those using Neovim and [this plugin](https://github.com/orfosys/nvim-ship)
+- [Docker files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/docker)
+- [Kubernetes files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/k8s)
+- [Ship files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/ships)
+    - For those using Neovim and [this plugin](https://github.com/javiorfo/nvim-ship)
 
 ---
 
 ### Donate
-- **Bitcoin** [(QR)](https://raw.githubusercontent.com/orfosys/img/master/crypto/bitcoin.png)  `1GqdJ63RDPE4eJKujHi166FAyigvHu5R7v`
+- **Bitcoin** [(QR)](https://raw.githubusercontent.com/javiorfo/img/master/crypto/bitcoin.png)  `1GqdJ63RDPE4eJKujHi166FAyigvHu5R7v`
 - [Paypal](https://www.paypal.com/donate/?hosted_button_id=FA7SGLSCT2H8G)
