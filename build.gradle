@@ -47,9 +47,6 @@ dependencies {
     implementation "io.micrometer:micrometer-tracing-bridge-otel"
     implementation "io.opentelemetry:opentelemetry-exporter-otlp"
 
-    // Auditory
-    implementation "org.springframework.data:spring-data-envers:${enversVersion}"
-
     // Swagger
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openapiVersion}"
 
@@ -74,5 +71,6 @@ test {
 
 task bootRunDev(type: Exec) {
     group = 'application'
+    delete 'schema.sql'
     commandLine "gradle", "bootRun", "--args='--spring.profiles.active=dev'"
 }

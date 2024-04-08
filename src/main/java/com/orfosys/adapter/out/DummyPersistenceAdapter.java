@@ -3,8 +3,6 @@ package com.orfosys.adapter.out;
 import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.orfosys.common.pagination.Paginator;
 import com.orfosys.application.out.FindDummyPersistence;
@@ -16,7 +14,6 @@ import lombok.AllArgsConstructor;
 
 @PersistenceAdapter
 @AllArgsConstructor
-@EnableJpaRepositories(repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
 public class DummyPersistenceAdapter implements FindDummyPersistence, SaveDummyPersistence {
     
     private final DummyEntityRepository dummyEntityRepository;

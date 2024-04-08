@@ -67,15 +67,15 @@ spring:
     hibernate:
 #       ddl-auto: create
       ddl-auto: update
-#     properties:
-#       javax:
-#         persistence:
-#           schema-generation:
-#             create-source: metadata
-#             scripts:
-#               action: create
-#               create-target: schema.sql
-#               create-script-source: metadata
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            create-source: metadata
+            scripts:
+              action: create
+              create-target: schema.sql
+              create-script-source: metadata
   devtools:
     restart:
       enabled: true

@@ -1,5 +1,6 @@
 # java-spring3-keycloak
-Hexagonal architecture, Java 21, Spring Boot 3 and Keycloak
+*Java archetype oriented to Microservices.*
+Hexagonal architecture, Java 21, Spring Boot 3, distributed tracing, log centralization and Keycloak.
 
 ## Features
 - Hexagonal Architecture
@@ -21,10 +22,11 @@ Hexagonal architecture, Java 21, Spring Boot 3 and Keycloak
 - Swagger
     - OpenApi
 - Auditory
-    - Hibernate Envers
+    - JPA auditing
 - Database
     - Postgres for the app
     - H2 for Test
+    - Schema generation (schema.sql)
 
 ## Files
 - [Docker files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/docker)

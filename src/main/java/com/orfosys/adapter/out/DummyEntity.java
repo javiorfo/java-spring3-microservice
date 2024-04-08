@@ -1,28 +1,31 @@
 package com.orfosys.adapter.out;
 
-import org.hibernate.envers.Audited;
+import com.orfosys.adapter.out.auditory.Auditable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Audited
+@Getter
+@Setter
 @Entity(name = "dummies")
-public class DummyEntity {
+public class DummyEntity extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private String info;
-    
+
     public DummyEntity(String info) {
         this.info = info;
     }

@@ -3,12 +3,18 @@ package com.orfosys.adapter.out;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.jdbc.Sql;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Optional;
 
 import com.orfosys.domain.model.Dummy;
 
@@ -18,6 +24,15 @@ import com.orfosys.domain.model.Dummy;
 })
 @Import({ DummyPersistenceAdapter.class, DummyMapper.class })
 public class DummyPersistenceTest {
+
+    @TestConfiguration
+    @EnableJpaAuditing(auditorAwareRef = "testAuditorAware")
+    public static class TestConfig {
+        @Bean
+        public AuditorAware<String> testAuditorAware() {
+            return () -> Optional.ofNullable("TestUser");
+        }
+    }
 
     @Autowired
     private DummyPersistenceAdapter dummyPersistenceAdapter;
