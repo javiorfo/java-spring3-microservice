@@ -16,7 +16,7 @@ echo "=              Docker Container Creation                ="
 echo "========================================================="
 echo ""
 
-echo "$label Postgres container for java-spring3-keyclaok..."
+echo "$label Postgres container for java-spring3-microservice..."
 docker-compose -f docker/postgres/docker-compose.yml "$action" -d
 
 echo "$label Postgres and Keycloak..."

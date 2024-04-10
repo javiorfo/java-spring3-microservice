@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-spring3-keycloak
+  name: java-spring3-microservice
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: java-spring3-keycloak
+      app: java-spring3-microservice
   template:
     metadata:
       labels:
-        app: java-spring3-keycloak
+        app: java-spring3-microservice
     spec:
       containers:
-      - name: java-spring3-keycloak
-        image: java-spring3-keycloak:0.1.0
+      - name: java-spring3-microservice
+        image: java-spring3-microservice:0.1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
@@ -31,10 +31,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: java-spring3-keycloak-svc
+  name: java-spring3-microservice-svc
 spec:
   selector:
-    app: java-spring3-keycloak
+    app: java-spring3-microservice
   ports:
     - protocol: TCP
       port: 8080

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: java-spring3-keycloak
+    name: java-spring3-microservice
   threads:
     virtual:
       enabled: true

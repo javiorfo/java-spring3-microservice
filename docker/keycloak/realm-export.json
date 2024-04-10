@@ -70,7 +70,7 @@
         "composite": true,
         "composites": {
           "client": {
-            "java-spring3-keycloak": [
+            "java-spring3-microservice": [
               "CLIENT_ADMIN"
             ]
           }
@@ -328,7 +328,7 @@
           "attributes": {}
         }
       ],
-      "java-spring3-keycloak": [
+      "java-spring3-microservice": [
         {
           "id": "1979fe66-0b49-4962-8755-937adfa051df",
           "name": "CLIENT_ADMIN",
@@ -489,18 +489,18 @@
     {
       "id": "54c7ef1a-d698-4d4d-9cb0-f0db0551a9cb",
       "createdTimestamp": 1712166900903,
-      "username": "service-account-java-spring3-keycloak",
+      "username": "service-account-java-spring3-microservice",
       "enabled": true,
       "totp": false,
       "emailVerified": false,
-      "serviceAccountClientId": "java-spring3-keycloak",
+      "serviceAccountClientId": "java-spring3-microservice",
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
         "default-roles-orfosys"
       ],
       "clientRoles": {
-        "java-spring3-keycloak": [
+        "java-spring3-microservice": [
           "uma_protection"
         ]
       },
@@ -705,7 +705,7 @@
     },
     {
       "id": "ff218c79-85f1-40b0-811f-f75b0984f147",
-      "clientId": "java-spring3-keycloak",
+      "clientId": "java-spring3-microservice",
       "name": "",
       "description": "",
       "rootUrl": "http://localhost:8080/app",
@@ -807,7 +807,7 @@
         "resources": [
           {
             "name": "Default Resource",
-            "type": "urn:java-spring3-keycloak:resources:default",
+            "type": "urn:java-spring3-microservice:resources:default",
             "ownerManagedAccess": false,
             "attributes": {},
             "_id": "b3045091-de12-4667-a998-0a7459593233",
@@ -836,7 +836,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "defaultResourceType": "urn:java-spring3-keycloak:resources:default",
+              "defaultResourceType": "urn:java-spring3-microservice:resources:default",
               "applyPolicies": "[\"Default Policy\"]"
             }
           }

@@ -1,4 +1,4 @@
-# java-spring3-keycloak
+# java-spring3-microservice
 *Java archetype oriented to Microservices.*
 
 Hexagonal architecture, Java 21, Spring Boot 3, distributed tracing, log centralization and Keycloak.
@@ -35,9 +35,9 @@ Java 21, Docker, Gradle
     - Schema generation (schema.sql)
 
 ## Files
-- [Docker files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/docker)
-- [Kubernetes files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/k8s)
-- [Ship files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/ships)
+- [Docker files](https://github.com/javiorfo/java-spring3-microservice/tree/master/docker)
+- [Kubernetes files](https://github.com/javiorfo/java-spring3-microservice/tree/master/k8s)
+- [Ship files](https://github.com/javiorfo/java-spring3-microservice/tree/master/ships)
     - For those using Neovim and [this plugin](https://github.com/javiorfo/nvim-ship)
 
 ## Usage
