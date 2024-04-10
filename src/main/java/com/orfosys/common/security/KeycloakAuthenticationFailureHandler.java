@@ -1,6 +1,5 @@
 package com.orfosys.common.security;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
@@ -13,9 +12,9 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.orfosys.common.response.RestResponseHeader;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
@@ -23,10 +22,12 @@ import lombok.extern.slf4j.Slf4j;
 public class KeycloakAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
     @Override
+    @SneakyThrows
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-            AuthenticationException exception) throws IOException, ServletException {
+            AuthenticationException exception) {
         var restResponseHeader = new RestResponseHeader(
-                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "AUTH_FAILED", "Authentication failure.")));
+                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "AUTH_FAILED",
+                        "Authentication failure.")));
         log.error("Authentication failure");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

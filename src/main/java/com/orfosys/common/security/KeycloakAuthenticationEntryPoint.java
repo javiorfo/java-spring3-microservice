@@ -1,6 +1,5 @@
 package com.orfosys.common.security;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
@@ -13,9 +12,9 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.orfosys.common.response.RestResponseHeader;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @Component("keycloakAuthenticationEntryPoint")
@@ -23,12 +22,12 @@ import lombok.extern.slf4j.Slf4j;
 public class KeycloakAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
+    @SneakyThrows
     public void commence(HttpServletRequest request, HttpServletResponse response,
-            AuthenticationException authException)
-            throws IOException, ServletException {
-
+            AuthenticationException authException) {
         var restResponseHeader = new RestResponseHeader(
-                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "INVALID_TOKEN", "Invalid token.")));
+                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "INVALID_TOKEN",
+                        "Invalid token.")));
         log.error("Invalid token");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

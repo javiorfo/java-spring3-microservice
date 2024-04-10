@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -20,10 +21,12 @@ import lombok.Setter;
 @Setter
 public abstract class Auditable {
     @CreatedDate
+    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
     @Column(nullable = false, updatable = false, name = "create_date")
     protected LocalDateTime createDate;
     
     @LastModifiedDate
+    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
     @Column(insertable = false, name = "last_modified")
     protected LocalDateTime lastModified;
 

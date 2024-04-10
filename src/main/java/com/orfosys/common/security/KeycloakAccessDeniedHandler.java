@@ -1,6 +1,5 @@
 package com.orfosys.common.security;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
@@ -13,9 +12,9 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.orfosys.common.response.RestResponseHeader;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
@@ -23,10 +22,12 @@ import lombok.extern.slf4j.Slf4j;
 public class KeycloakAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
+    @SneakyThrows
     public void handle(HttpServletRequest request, HttpServletResponse response,
-            AccessDeniedException accessDeniedException) throws IOException, ServletException {
+            AccessDeniedException accessDeniedException) {
         var restResponseHeader = new RestResponseHeader(
-                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "ACCESS_DENIED", "Access denied to this resource.")));
+                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "ACCESS_DENIED",
+                        "Access denied to this resource.")));
         log.error("Access denied");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);

@@ -28,6 +28,7 @@ ext {
 	set('enversVersion', '3.2.0')
 	set('lombokVersion', '1.18.30')
 	set('openapiVersion', '2.2.0')
+	set('logstashVersion', '7.4')
 }
 
 dependencies {
@@ -46,6 +47,9 @@ dependencies {
     // Tracing
     implementation "io.micrometer:micrometer-tracing-bridge-otel"
     implementation "io.opentelemetry:opentelemetry-exporter-otlp"
+
+    // Log centralization
+    implementation "net.logstash.logback:logstash-logback-encoder:${logstashVersion}"
 
     // Swagger
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openapiVersion}"

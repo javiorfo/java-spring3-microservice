@@ -50,7 +50,10 @@ management:
 
 logging:
   pattern:
-    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+    level: "%5p [${spring.application.name:}, traceID=%X{traceId:-}, spanID=%X{spanId:-}]"
+
+logstash:
+  destination: ${LOGSTASH_HOST:localhost:5000}
 
 ---
 
@@ -65,8 +68,8 @@ spring:
     password: admin
   jpa:
     hibernate:
-#       ddl-auto: create
-      ddl-auto: update
+      ddl-auto: create
+#       ddl-auto: update
     properties:
       javax:
         persistence:

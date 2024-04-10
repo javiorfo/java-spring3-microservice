@@ -2,6 +2,7 @@ services:
   postgres:
     container_name: postgres_keycloak
     image: postgres
+    restart: always
     environment:
       POSTGRES_PASSWORD: admin
       POSTGRES_USER: admin
@@ -13,6 +14,9 @@ services:
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:21.1.1
+    restart: always
+    volumes:
+      ./realm-export.json:/opt/jboss/keycloak/imports/realm-export.json
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
@@ -20,6 +24,7 @@ services:
       KC_DB_URL: jdbc:postgresql://postgres/keycloakdb
       KC_DB_USERNAME: admin
       KC_DB_PASSWORD: admin
+      KEYCLOAK_IMPORT: /opt/jboss/keycloak/imports/realm-export.json
     depends_on:
       - postgres
     ports:

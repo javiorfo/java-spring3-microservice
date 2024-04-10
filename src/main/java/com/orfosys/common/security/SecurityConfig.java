@@ -1,6 +1,8 @@
 package com.orfosys.common.security;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -29,7 +31,7 @@ public class SecurityConfig {
     @Autowired
     @Qualifier("keycloakAuthenticationEntryPoint")
     private AuthenticationEntryPoint authEntryPoint;
-    
+
     @Autowired
     private KeycloakAccessDeniedHandler keycloakAccessDeniedHandler;
 
@@ -42,7 +44,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    @SneakyThrows
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) {
         httpSecurity
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
@@ -51,7 +54,8 @@ public class SecurityConfig {
                 .exceptionHandling(ex -> ex.accessDeniedHandler(keycloakAccessDeniedHandler))
                 .formLogin(form -> form.failureHandler(keycloakAuthenticationFailureHandler))
                 .oauth2ResourceServer(
-                        oauth2 -> oauth2.jwt(configurer -> configurer.jwtAuthenticationConverter(jwtAuthConverter)).authenticationEntryPoint(authEntryPoint))
+                        oauth2 -> oauth2.jwt(configurer -> configurer.jwtAuthenticationConverter(jwtAuthConverter))
+                                .authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS));
 
         return httpSecurity.build();

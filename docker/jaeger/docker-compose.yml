@@ -2,6 +2,7 @@ services:
   jaeger:
     container_name: jaeger
     image: jaegertracing/all-in-one:latest
+    restart: always
     ports:
       - 4318:4318
       - 16686:16686

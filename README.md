@@ -1,6 +1,10 @@
 # java-spring3-keycloak
 *Java archetype oriented to Microservices.*
+
 Hexagonal architecture, Java 21, Spring Boot 3, distributed tracing, log centralization and Keycloak.
+
+## Dependencies
+Java 21, Docker, Gradle
 
 ## Features
 - Hexagonal Architecture
@@ -19,6 +23,8 @@ Hexagonal architecture, Java 21, Spring Boot 3, distributed tracing, log central
 - Keycloak as Auth Server
 - Distributed tracing
     - OpenTelemetry, Micrometer and Jaeger
+- Log Centralization
+    - Logstash, ElasticSearch and Kibana
 - Swagger
     - OpenApi
 - Auditory
@@ -33,6 +39,11 @@ Hexagonal architecture, Java 21, Spring Boot 3, distributed tracing, log central
 - [Kubernetes files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/k8s)
 - [Ship files](https://github.com/javiorfo/java-spring3-keycloak/tree/master/ships)
     - For those using Neovim and [this plugin](https://github.com/javiorfo/nvim-ship)
+
+## Usage
+- Create the containers executing `./containers.sh` 
+- Start the application with the command `gradle bootRunDev`
+- To delete all the containers: `./containers.sh d`
 
 ---
 
