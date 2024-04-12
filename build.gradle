@@ -25,7 +25,6 @@ ext {
 	set('postgresVersion', '42.6.0')
 	set('junitJupiterVersion', '5.9.3')
 	set('mockitoVersion', '5.3.1')
-	set('enversVersion', '3.2.0')
 	set('lombokVersion', '1.18.30')
 	set('openapiVersion', '2.2.0')
 	set('logstashVersion', '7.4')
