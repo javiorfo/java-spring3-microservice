@@ -5,6 +5,7 @@ import com.orfosys.application.in.SaveDummyUseCase;
 import com.orfosys.application.in.request.DummyRequest;
 import com.orfosys.application.in.response.DummyResponse;
 import com.orfosys.common.annotation.WebAdapter;
+import com.orfosys.common.pagination.Page;
 import com.orfosys.common.response.RestResponsePagination;
 import com.orfosys.domain.model.Dummy;
 
@@ -44,7 +45,8 @@ public class DummyController {
             @RequestParam(defaultValue = "10") int size,
             @RequestParam(defaultValue = "id") String sortBy,
             @RequestParam(defaultValue = "asc") String sortOrder) {
-        var pageElements = findDummyUseCase.findAll(page, size, sortBy, sortOrder);
+        var pageObj = new Page(page, size, sortBy, sortOrder);
+        var pageElements = findDummyUseCase.findAll(pageObj);
         var response = new RestResponsePagination<>(pageElements.pagination(), pageElements.results());
         return ResponseEntity.ok(response);
     }

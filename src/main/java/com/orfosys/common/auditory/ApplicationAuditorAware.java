@@ -15,10 +15,7 @@ public class ApplicationAuditorAware implements AuditorAware<String> {
         return Optional.ofNullable(SecurityContextHolder.getContext())
             .map(SecurityContext::getAuthentication)
             .filter(Authentication::isAuthenticated)
-//             .map(Authentication::getPrincipal)
             .map(JwtAuthenticationToken.class::cast)
             .map(token -> token.getTokenAttributes().get("preferred_username").toString());
-//             .map(User.class::cast)
-//             .map(User::getUsername);
     }
 }

@@ -7,9 +7,7 @@ import com.orfosys.domain.model.Dummy;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-
+import com.orfosys.common.pagination.Page;
 import com.orfosys.common.pagination.Paginator;
 import com.orfosys.application.in.FindDummyUseCase;
 import com.orfosys.application.in.SaveDummyUseCase;
@@ -31,10 +29,9 @@ public class DummyService implements FindDummyUseCase, SaveDummyUseCase {
     }
 
     @Override
-    public Paginator.Pair<Dummy> findAll(int page, int size, String sortBy, String sortOrder) {
+    public Paginator.Pair<Dummy> findAll(Page page) {
         log.info("Searching dummies");
-        Pageable pageable = PageRequest.of(page, size, Paginator.createSort(sortBy, sortOrder));
-        return findDummyPersistence.findAll(pageable);
+        return findDummyPersistence.findAll(page);
     }
 
     @Override

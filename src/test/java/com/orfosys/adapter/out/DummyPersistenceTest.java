@@ -7,8 +7,6 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.AuditorAware;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.jdbc.Sql;
 
@@ -16,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
+import com.orfosys.common.pagination.Page;
 import com.orfosys.domain.model.Dummy;
 
 @DataJpaTest(properties = {
@@ -47,9 +46,9 @@ public class DummyPersistenceTest {
     @Test
     @Sql("db.sql")
     public void findAll() {
-        var pageable = PageRequest.of(0, 10, Sort.by(Sort.Order.asc("id")));
+        var page = new Page(0, 10, "id", "asc");
 
-        var result = dummyPersistenceAdapter.findAll(pageable);
+        var result = dummyPersistenceAdapter.findAll(page);
 
         assertThat(result.results().size()).isEqualTo(2);
     }

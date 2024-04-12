@@ -5,8 +5,6 @@ import java.util.Objects;
 import java.util.function.Function;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
-
 import com.orfosys.common.response.Pagination;
 
 public class Paginator {
@@ -23,9 +21,5 @@ public class Paginator {
         var total = page.getTotalElements();
         var pagination = new Pagination(pageNumber, pageSize, total);
         return new Pair<R>(pagination, content);
-    }
-
-    public static Sort createSort(String sortBy, String sortOrder) {
-        return Sort.by(sortOrder.equalsIgnoreCase("asc") ? Sort.Order.asc(sortBy) : Sort.Order.desc(sortBy));
     }
 }

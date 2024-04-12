@@ -2,8 +2,7 @@ package com.orfosys.adapter.out;
 
 import java.util.Optional;
 
-import org.springframework.data.domain.Pageable;
-
+import com.orfosys.common.pagination.Page;
 import com.orfosys.common.pagination.Paginator;
 import com.orfosys.application.out.FindDummyPersistence;
 import com.orfosys.application.out.SaveDummyPersistence;
@@ -15,7 +14,7 @@ import lombok.AllArgsConstructor;
 @PersistenceAdapter
 @AllArgsConstructor
 public class DummyPersistenceAdapter implements FindDummyPersistence, SaveDummyPersistence {
-    
+
     private final DummyEntityRepository dummyEntityRepository;
 
     @Override
@@ -33,8 +32,7 @@ public class DummyPersistenceAdapter implements FindDummyPersistence, SaveDummyP
     }
 
     @Override
-    public Paginator.Pair<Dummy> findAll(Pageable pageable) {
-        var page = dummyEntityRepository.findAll(pageable);
-        return Paginator.create(page, DummyMapper::entityToDomain);
+    public Paginator.Pair<Dummy> findAll(Page page) {
+        return Paginator.create(dummyEntityRepository.findAll(page.getPageable()), DummyMapper::entityToDomain);
     }
 }

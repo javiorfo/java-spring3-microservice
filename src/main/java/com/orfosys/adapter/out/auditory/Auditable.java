@@ -20,13 +20,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Auditable {
+    private static final String DATE_FORMAT = "dd-MM-yyyy hh:mm:ss";
+    
     @CreatedDate
-    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+    @DateTimeFormat(pattern = DATE_FORMAT)
     @Column(nullable = false, updatable = false, name = "create_date")
     protected LocalDateTime createDate;
     
     @LastModifiedDate
-    @DateTimeFormat(pattern = "dd-MM-yyyy hh:mm:ss")
+    @DateTimeFormat(pattern = DATE_FORMAT)
     @Column(insertable = false, name = "last_modified")
     protected LocalDateTime lastModified;
 
