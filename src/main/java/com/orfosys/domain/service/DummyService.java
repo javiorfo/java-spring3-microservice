@@ -38,5 +38,5 @@ public class DummyService implements FindDummyUseCase, SaveDummyUseCase {
     public Dummy save(Dummy dummy) {
         log.info("Saving dummy: {}", dummy.toString());
         return this.saveDummyPersistence.save(dummy);
-    } 
+    }
 }

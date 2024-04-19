@@ -1,9 +1,6 @@
 spring:
-  application:
-    name: java-spring3-microservice
-  threads:
-    virtual:
-      enabled: true
+  application.name: java-spring3-microservice
+  threads.virtual.enabled: true
   datasource:
     url: jdbc:postgresql://${DB_HOST}/${DB_NAME}
     username: ${DB_USER}
@@ -12,17 +9,14 @@ spring:
   jpa:
     show-sql: ${JPA_SHOW_SQL:true}
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: none
+    hibernate.ddl-auto: none
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/orfosys
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
-  devtools:
-    restart:
-      enabled: false
+  devtools.restart.enabled: false
 
 springdoc:
   api-docs:
@@ -36,32 +30,25 @@ springdoc:
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
 
-server:
-  servlet:
-    context-path: /orfosys
+server.servlet.context-path: /orfosys
 
-tracing:
-  url: ${TRACING_HOST:http://localhost:4318}/v1/traces
+tracing.url: ${TRACING_HOST:http://localhost:4318}/v1/traces
 
 management:
-  tracing:
-    sampling:
-      probability: 1.0
+  endpoints.web.exposure.include: health,env,metrics
+  tracing.sampling.probability: 1.0
 
 logging:
   pattern:
     level: "%5p [${spring.application.name:}, traceID=%X{traceId:-}, spanID=%X{spanId:-}]"
 
-logstash:
-  destination: ${LOGSTASH_HOST:localhost:5000}
+logstash.destination: ${LOGSTASH_HOST:localhost:5000}
 
 ---
 
 # Use this profile with "gradle bootRunDev"
 spring:
-  config:
-    activate:
-      on-profile: dev
+  config.activate.on-profile: dev
   datasource:
     url: jdbc:postgresql://localhost:5432/db_dummy
     username: admin
@@ -79,11 +66,9 @@ spring:
               action: create
               create-target: schema.sql
               create-script-source: metadata
-  devtools:
-    restart:
-      enabled: true
+  devtools.restart.enabled: true
 
 springdoc:
   swagger-ui:
     oauth:
-      client-secret: RqaTlO0d2OnBbeRuImNnbLWm5yZL66Mo
+      client-secret: ${KEYCLOAK_CLIENT_SECRET:RqaTlO0d2OnBbeRuImNnbLWm5yZL66Mo}

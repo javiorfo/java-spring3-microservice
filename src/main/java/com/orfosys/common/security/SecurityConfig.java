@@ -49,7 +49,7 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(CsrfConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/actuator/**").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex.accessDeniedHandler(keycloakAccessDeniedHandler))
                 .formLogin(form -> form.failureHandler(keycloakAuthenticationFailureHandler))

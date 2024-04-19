@@ -3,6 +3,7 @@ package com.orfosys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
@@ -25,6 +26,7 @@ public class Application {
 	}
 
     @Bean
+    @ConditionalOnProperty(value = "tracing.url")
     public OtlpHttpSpanExporter otlpHttpSpanExporter(@Value("${tracing.url}") String url) {
         return OtlpHttpSpanExporter.builder()
                 .setEndpoint(url)
