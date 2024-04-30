@@ -9,6 +9,9 @@ import com.orfosys.application.out.SaveDummyPersistence;
 import com.orfosys.common.annotation.PersistenceAdapter;
 import com.orfosys.domain.model.Dummy;
 
+import com.orfosys.adapter.out.repositories.DummyEntityRepository;
+import com.orfosys.adapter.out.mappers.DummyMapper;
+
 import lombok.AllArgsConstructor;
 
 @PersistenceAdapter

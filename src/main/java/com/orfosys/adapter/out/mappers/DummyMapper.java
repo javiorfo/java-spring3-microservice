@@ -1,7 +1,8 @@
-package com.orfosys.adapter.out;
+package com.orfosys.adapter.out.mappers;
 
 import java.util.Optional;
 
+import com.orfosys.adapter.out.entities.DummyEntity;
 import com.orfosys.domain.model.Dummy;
 
 public class DummyMapper {

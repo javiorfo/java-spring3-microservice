@@ -1,4 +1,4 @@
-package com.orfosys.adapter.out;
+package com.orfosys.adapter.out.entities;
 
 import com.orfosys.adapter.out.auditory.Auditable;
 

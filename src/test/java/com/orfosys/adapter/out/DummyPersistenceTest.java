@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
 
+import com.orfosys.adapter.out.mappers.DummyMapper;
 import com.orfosys.common.pagination.Page;
 import com.orfosys.domain.model.Dummy;
 
@@ -24,6 +25,9 @@ import com.orfosys.domain.model.Dummy;
 @Import({ DummyPersistenceAdapter.class, DummyMapper.class })
 public class DummyPersistenceTest {
 
+    @Autowired
+    private DummyPersistenceAdapter dummyPersistenceAdapter;
+
     @TestConfiguration
     @EnableJpaAuditing(auditorAwareRef = "testAuditorAware")
     public static class TestConfig {
@@ -32,10 +36,7 @@ public class DummyPersistenceTest {
             return () -> Optional.ofNullable("TestUser");
         }
     }
-
-    @Autowired
-    private DummyPersistenceAdapter dummyPersistenceAdapter;
-
+    
     @Test
     @Sql("db.sql")
     public void findById() {
