@@ -5,10 +5,10 @@ import java.util.Objects;
 import java.util.function.Function;
 
 import org.springframework.data.domain.Page;
-import com.orfosys.common.response.Pagination;
+import com.orfosys.common.response.PaginationResponse;
 
 public class Paginator {
-    public record Pair<T>(Pagination pagination, List<T> results) {
+    public record Pair<T>(PaginationResponse pagination, List<T> results) {
         public Pair {
             pagination = Objects.requireNonNull(pagination);
         }
@@ -19,7 +19,7 @@ public class Paginator {
         var pageNumber = page.getPageable().getPageNumber();
         var pageSize = page.getPageable().getPageSize();
         var total = page.getTotalElements();
-        var pagination = new Pagination(pageNumber, pageSize, total);
+        var pagination = new PaginationResponse(pageNumber, pageSize, total);
         return new Pair<R>(pagination, content);
     }
 }

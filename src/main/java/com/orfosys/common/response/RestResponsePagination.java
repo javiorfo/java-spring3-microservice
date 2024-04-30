@@ -9,7 +9,7 @@ import lombok.Getter;
 public class RestResponsePagination<T> extends RestResponse {
    
     @Getter
-    private Pagination pagination;
+    private PaginationResponse pagination;
 
     @Getter
     private List<T> elements;
