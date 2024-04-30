@@ -9,34 +9,31 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.orfosys.common.pagination.Page;
 import com.orfosys.common.pagination.Paginator;
-import com.orfosys.application.in.FindDummyUseCase;
-import com.orfosys.application.in.SaveDummyUseCase;
-import com.orfosys.application.out.FindDummyPersistence;
-import com.orfosys.application.out.SaveDummyPersistence;
+import com.orfosys.application.in.DummyUseCase;
+import com.orfosys.application.out.DummyPersistence;
 
 @UseCase
 @AllArgsConstructor
 @Slf4j
-public class DummyService implements FindDummyUseCase, SaveDummyUseCase {
+public class DummyService implements DummyUseCase {
 
-    private final FindDummyPersistence findDummyPersistence;
-    private final SaveDummyPersistence saveDummyPersistence;
+    private final DummyPersistence dummyPersistence;
 
     @Override
     public Dummy findById(int id) {
         log.info("Searching dummy by id: {}", id);
-        return this.findDummyPersistence.findById(id).orElseThrow(NotFoundException::new);
+        return this.dummyPersistence.findById(id).orElseThrow(NotFoundException::new);
     }
 
     @Override
     public Paginator.Pair<Dummy> findAll(Page page) {
         log.info("Searching dummies");
-        return findDummyPersistence.findAll(page);
+        return dummyPersistence.findAll(page);
     }
 
     @Override
     public Dummy save(Dummy dummy) {
         log.info("Saving dummy: {}", dummy.toString());
-        return this.saveDummyPersistence.save(dummy);
+        return this.dummyPersistence.save(dummy);
     }
 }

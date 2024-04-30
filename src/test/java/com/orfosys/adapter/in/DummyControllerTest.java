@@ -11,8 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.orfosys.application.in.FindDummyUseCase;
-import com.orfosys.application.in.SaveDummyUseCase;
+import com.orfosys.application.in.DummyUseCase;
 import com.orfosys.domain.model.Dummy;
 
 @WebMvcTest(controllers = DummyController.class)
@@ -24,14 +23,11 @@ public class DummyControllerTest {
 	private MockMvc mockMvc;
 
 	@MockBean
-	private  FindDummyUseCase findDummyUseCase;
+	private  DummyUseCase dummyUseCase;
 	
-    @MockBean
-	private  SaveDummyUseCase saveDummyUseCase;
-
 	@Test
 	void findDummy() throws Exception {
-        Mockito.when(findDummyUseCase.findById(1)).thenReturn(new Dummy("dummy"));
+        Mockito.when(dummyUseCase.findById(1)).thenReturn(new Dummy("dummy"));
 
 		mockMvc.perform(get("/dummy/{id}", 1)
 				.header("Content-Type", "application/json"))

@@ -3,8 +3,7 @@ package com.orfosys.domain.service;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import com.orfosys.application.out.FindDummyPersistence;
-import com.orfosys.application.out.SaveDummyPersistence;
+import com.orfosys.application.out.DummyPersistence;
 import com.orfosys.domain.model.Dummy;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,16 +13,15 @@ import java.util.Optional;
 
 public class DummyServiceTest {
 
-    private final FindDummyPersistence findDummyPersistence = Mockito.mock(FindDummyPersistence.class);
-    private final SaveDummyPersistence saveDummyPersistence = Mockito.mock(SaveDummyPersistence.class);
-    private final DummyService dummyService = new DummyService(findDummyPersistence, saveDummyPersistence);
+    private final DummyPersistence dummyPersistence = Mockito.mock(DummyPersistence.class);
+    private final DummyService dummyService = new DummyService(dummyPersistence);
 
     @Test
     public void findDummy() {
         Dummy dummy = Mockito.mock(Dummy.class);
         given(dummy.info()).willReturn("test");
 
-        given(findDummyPersistence.findById(eq(1))).willReturn(Optional.of(dummy));
+        given(dummyPersistence.findById(eq(1))).willReturn(Optional.of(dummy));
 
         dummy = dummyService.findById(1);
 
@@ -35,7 +33,7 @@ public class DummyServiceTest {
         Dummy dummy = Mockito.mock(Dummy.class);
         given(dummy.info()).willReturn("save");
 
-        given(saveDummyPersistence.save(eq(dummy))).willReturn(dummy);
+        given(dummyPersistence.save(eq(dummy))).willReturn(dummy);
 
         dummy = dummyService.save(dummy);
 

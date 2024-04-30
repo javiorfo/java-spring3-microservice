@@ -4,8 +4,7 @@ import java.util.Optional;
 
 import com.orfosys.common.pagination.Page;
 import com.orfosys.common.pagination.Paginator;
-import com.orfosys.application.out.FindDummyPersistence;
-import com.orfosys.application.out.SaveDummyPersistence;
+import com.orfosys.application.out.DummyPersistence;
 import com.orfosys.common.annotation.PersistenceAdapter;
 import com.orfosys.domain.model.Dummy;
 
@@ -16,7 +15,7 @@ import lombok.AllArgsConstructor;
 
 @PersistenceAdapter
 @AllArgsConstructor
-public class DummyPersistenceAdapter implements FindDummyPersistence, SaveDummyPersistence {
+public class DummyPersistenceAdapter implements DummyPersistence {
 
     private final DummyEntityRepository dummyEntityRepository;
 
