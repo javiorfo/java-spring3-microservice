@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public class RestResponsePagination<T> extends RestResponse {
+public class RestResponsePagination<T> {
    
     @Getter
     private PaginationResponse pagination;

@@ -12,36 +12,36 @@ import org.springframework.web.client.HttpServerErrorException;
 import com.orfosys.common.exception.BackEndException;
 import com.orfosys.common.exception.BackEndListException;
 import com.orfosys.common.exception.InternalErrorException;
-import com.orfosys.common.response.RestResponseHeader;
+import com.orfosys.common.response.RestResponseError;
 
 @RestControllerAdvice
 public class ExceptionController {
     
     @ExceptionHandler(value = BackEndException.class)
-    public ResponseEntity<RestResponseHeader> backEndException(BackEndException backEndException) {
+    public ResponseEntity<RestResponseError> backEndException(BackEndException backEndException) {
         return response(backEndException); 
     }
 
     @ExceptionHandler(value = BackEndListException.class)
-    public ResponseEntity<RestResponseHeader> backEndListException(BackEndListException backEndListException) {
+    public ResponseEntity<RestResponseError> backEndListException(BackEndListException backEndListException) {
         return response(backEndListException); 
     }
 
     @ExceptionHandler(value = { SQLException.class, SQLGrammarException.class, HttpServerErrorException.class })
-    public ResponseEntity<RestResponseHeader> sqlException(Exception exception) {
+    public ResponseEntity<RestResponseError> sqlException(Exception exception) {
         exception.printStackTrace();
         return response(new InternalErrorException()); 
     }
 
-    private ResponseEntity<RestResponseHeader> response(BackEndException backEndException) {
+    private ResponseEntity<RestResponseError> response(BackEndException backEndException) {
         var error = backEndException.getError();
-        var restResponseHeader = new RestResponseHeader(List.of(error));
-        return new ResponseEntity<RestResponseHeader>(restResponseHeader, error.httpStatus());
+        var restResponseError = new RestResponseError(List.of(error));
+        return new ResponseEntity<RestResponseError>(restResponseError, error.httpStatus());
     }
 
-    private ResponseEntity<RestResponseHeader> response(BackEndListException backEndListException) {
-        var restResponseHeader = new RestResponseHeader(backEndListException.getErrors());
-        return new ResponseEntity<RestResponseHeader>(restResponseHeader, backEndListException.getHttpStatus());
+    private ResponseEntity<RestResponseError> response(BackEndListException backEndListException) {
+        var restResponseError = new RestResponseError(backEndListException.getErrors());
+        return new ResponseEntity<RestResponseError>(restResponseError, backEndListException.getHttpStatus());
     }
 }
 

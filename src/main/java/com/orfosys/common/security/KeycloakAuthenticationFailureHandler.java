@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.orfosys.common.response.RestResponseHeader;
+import com.orfosys.common.response.RestResponseError;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,8 +25,8 @@ public class KeycloakAuthenticationFailureHandler implements AuthenticationFailu
     @SneakyThrows
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) {
-        var restResponseHeader = new RestResponseHeader(
-                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "AUTH_FAILED",
+        var restResponseHeader = new RestResponseError(
+                List.of(new RestResponseError.Error(HttpStatus.INTERNAL_SERVER_ERROR, "AUTH_FAILED",
                         "Authentication failure.")));
         log.error("Authentication failure");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);

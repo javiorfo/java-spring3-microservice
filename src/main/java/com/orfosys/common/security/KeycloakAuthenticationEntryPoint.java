@@ -10,7 +10,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.orfosys.common.response.RestResponseHeader;
+import com.orfosys.common.response.RestResponseError;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,8 +25,8 @@ public class KeycloakAuthenticationEntryPoint implements AuthenticationEntryPoin
     @SneakyThrows
     public void commence(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException authException) {
-        var restResponseHeader = new RestResponseHeader(
-                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "INVALID_TOKEN",
+        var restResponseHeader = new RestResponseError(
+                List.of(new RestResponseError.Error(HttpStatus.INTERNAL_SERVER_ERROR, "INVALID_TOKEN",
                         "Invalid token.")));
         log.error("Invalid token");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);

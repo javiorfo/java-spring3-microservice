@@ -10,7 +10,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.orfosys.common.response.RestResponseHeader;
+import com.orfosys.common.response.RestResponseError;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,8 +25,8 @@ public class KeycloakAccessDeniedHandler implements AccessDeniedHandler {
     @SneakyThrows
     public void handle(HttpServletRequest request, HttpServletResponse response,
             AccessDeniedException accessDeniedException) {
-        var restResponseHeader = new RestResponseHeader(
-                List.of(new RestResponseHeader.Error(HttpStatus.INTERNAL_SERVER_ERROR, "ACCESS_DENIED",
+        var restResponseHeader = new RestResponseError(
+                List.of(new RestResponseError.Error(HttpStatus.INTERNAL_SERVER_ERROR, "ACCESS_DENIED",
                         "Access denied to this resource.")));
         log.error("Access denied");
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
