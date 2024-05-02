@@ -40,8 +40,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
     implementation "org.springframework.boot:spring-boot-starter-security"
-    implementation "org.springframework.boot:spring-boot-devtools"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
 
     // Tracing
     implementation "io.micrometer:micrometer-tracing-bridge-otel"
@@ -54,7 +54,7 @@ dependencies {
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openapiVersion}"
 
     // Database
-    implementation "org.postgresql:postgresql:${postgresVersion}"
+    runtimeOnly "org.postgresql:postgresql:${postgresVersion}"
 
     // Test
 	testImplementation "org.springframework.boot:spring-boot-starter-test"
