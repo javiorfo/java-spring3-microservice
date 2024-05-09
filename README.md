@@ -45,6 +45,8 @@ Java 21, Docker, Gradle
 - Start the application with the command `gradle bootRunDev`
 - To delete all the containers: `./containers.sh d`
 
+## MongoDB instead of Postgres
+- [MongoDB branch](https://github.com/javiorfo/java-spring3-microservice/tree/mongodb) contains version with MongoDB
 ---
 
 ### Donate
