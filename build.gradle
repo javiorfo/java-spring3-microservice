@@ -1,8 +1,12 @@
 plugins {
     id 'java'
-	id 'org.springframework.boot' version '3.2.4'
+	id 'org.springframework.boot' version '3.2.5'
 	id 'io.spring.dependency-management' version '1.1.4'
     id 'org.graalvm.buildtools.native' version '0.9.28'
+}
+
+ext {
+    bootVersion = '3.2.5'
 }
 
 group = 'com.orfosys'
@@ -22,18 +26,15 @@ repositories {
 }
 
 ext {
-	set('postgresVersion', '42.6.0')
-	set('junitJupiterVersion', '5.9.3')
-	set('mockitoVersion', '5.3.1')
-	set('lombokVersion', '1.18.30')
-	set('openapiVersion', '2.2.0')
-	set('logstashVersion', '7.4')
+	postgresVersion = '42.6.0'
+	openapiVersion = '2.2.0'
+	logstashVersion = '7.4'
 }
 
 dependencies {
     // Lombok
-    compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok"
+    annotationProcessor "org.projectlombok:lombok"
 
     // Spring
     implementation "org.springframework.boot:spring-boot-starter-web"
@@ -58,8 +59,8 @@ dependencies {
 
     // Test
 	testImplementation "org.springframework.boot:spring-boot-starter-test"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
-    testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine"
+    testImplementation "org.mockito:mockito-junit-jupiter"
     testImplementation "com.h2database:h2"
     runtimeOnly "com.h2database:h2"
 }
