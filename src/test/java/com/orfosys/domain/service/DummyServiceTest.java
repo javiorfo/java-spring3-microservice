@@ -4,11 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.orfosys.application.out.DummyPersistence;
+import com.orfosys.common.pagination.Page;
+import com.orfosys.common.pagination.Paginator;
+import com.orfosys.common.response.PaginationResponse;
 import com.orfosys.domain.model.Dummy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.*;
 
+import java.util.Collections;
 import java.util.Optional;
 
 public class DummyServiceTest {
@@ -17,7 +21,7 @@ public class DummyServiceTest {
     private final DummyService dummyService = new DummyService(dummyPersistence);
 
     @Test
-    public void findDummy() {
+    public void find() {
         Dummy dummy = Mockito.mock(Dummy.class);
         given(dummy.info()).willReturn("test");
 
@@ -29,7 +33,18 @@ public class DummyServiceTest {
     }
 
     @Test
-    public void saveDummy() {
+    public void findAll() {
+        var page = new Page(0, 10, "id", "asc");
+        var pair = new Paginator.Pair<Dummy>(new PaginationResponse(0, 10, 0), Collections.emptyList());
+
+        given(dummyPersistence.findAll(page)).willReturn(pair);
+
+        var res = dummyService.findAll(page);
+
+        assertThat(res).isNotNull();
+    }
+    @Test
+    public void save() {
         Dummy dummy = Mockito.mock(Dummy.class);
         given(dummy.info()).willReturn("save");
 
