@@ -9,6 +9,7 @@ import com.orfosys.common.response.RestResponsePagination;
 import com.orfosys.domain.model.Dummy;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,7 +52,7 @@ public class DummyController {
 
     @PostMapping
     @PreAuthorize("hasRole('CLIENT_ADMIN')")
-    public ResponseEntity<DummyResponse> save(@RequestBody DummyRequest request) {
+    public ResponseEntity<DummyResponse> save(@Valid @RequestBody DummyRequest request) {
         var dummy = dummyUseCase.save(new Dummy(request.info()));
         return ResponseEntity.ok(new DummyResponse(dummy));
     }

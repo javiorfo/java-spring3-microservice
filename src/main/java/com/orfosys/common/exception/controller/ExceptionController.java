@@ -4,7 +4,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.exception.SQLGrammarException;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpServerErrorException;
@@ -31,6 +34,17 @@ public class ExceptionController {
     public ResponseEntity<RestResponseError> sqlException(Exception exception) {
         exception.printStackTrace();
         return response(new InternalErrorException()); 
+    }
+
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ResponseEntity<RestResponseError> validationException(MethodArgumentNotValidException ex) {
+        List<RestResponseError.Error> errors = ex.getBindingResult().getFieldErrors().stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .map(err -> new RestResponseError.Error(HttpStatus.BAD_REQUEST, "BAD_REQUEST", err))
+                .toList();
+        
+        var restResponseError = new RestResponseError(errors);
+        return new ResponseEntity<RestResponseError>(restResponseError, HttpStatus.BAD_REQUEST);
     }
 
     private ResponseEntity<RestResponseError> response(BackEndException backEndException) {
