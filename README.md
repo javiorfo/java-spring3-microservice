@@ -46,7 +46,7 @@ Java 21, Docker, Gradle
 - To delete all the containers: `./containers.sh d`
 
 ## MongoDB instead of Postgres
-- [MongoDB branch](https://github.com/javiorfo/java-spring3-microservice/tree/mongodb) contains version with MongoDB
+- [MongoDB repo](https://github.com/javiorfo/java-spring3-microservice-mongo) contains version with MongoDB
 ---
 
 ### Donate
