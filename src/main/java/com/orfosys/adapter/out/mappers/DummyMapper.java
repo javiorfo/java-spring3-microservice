@@ -1,7 +1,5 @@
 package com.orfosys.adapter.out.mappers;
 
-import java.util.Optional;
-
 import com.orfosys.adapter.out.entities.DummyEntity;
 import com.orfosys.domain.model.Dummy;
 
@@ -14,7 +12,7 @@ public class DummyMapper {
         throw new IllegalStateException("DummyEntity is null");
     }
 
-    public static Optional<DummyEntity> domainToEntity(Dummy dummy) {
-        return dummy != null ? Optional.of(new DummyEntity(dummy.info())) : Optional.empty();
+    public static DummyEntity domainToEntity(Dummy dummy) {
+        return dummy != null ? new DummyEntity(dummy.info()) : null;
     }
 }

@@ -28,7 +28,7 @@ public class DummyPersistenceAdapter implements DummyPersistence {
 
     @Override
     public Dummy save(Dummy dummy) {
-        var dummyEntity = DummyMapper.domainToEntity(dummy).orElseThrow(IllegalStateException::new);
+        var dummyEntity = DummyMapper.domainToEntity(dummy);
         dummy = DummyMapper.entityToDomain(dummyEntityRepository.save(dummyEntity));
         return dummy;
     }
