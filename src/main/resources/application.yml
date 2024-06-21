@@ -42,7 +42,7 @@ logging:
   pattern:
     level: "%5p [${spring.application.name:}, traceID=%X{traceId:-}, spanID=%X{spanId:-}]"
 
-logstash.destination: ${LOGSTASH_HOST:localhost:5000}
+logstash.destination: ${LOGSTASH_HOST:http://localhost:5000}
 
 ---
 
