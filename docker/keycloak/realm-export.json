@@ -1,6 +1,6 @@
 {
   "id": "5b1be921-15e4-4abb-9770-ff34129a5991",
-  "realm": "orfosys",
+  "realm": "chaosystema",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -70,7 +70,7 @@
         "composite": true,
         "composites": {
           "client": {
-            "java-spring3-microservice": [
+            "srv-client": [
               "CLIENT_ADMIN"
             ]
           }
@@ -81,7 +81,7 @@
       },
       {
         "id": "c838f9d5-a8c3-4b6f-a24c-96e259db9121",
-        "name": "default-roles-orfosys",
+        "name": "default-roles-chaosystema",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -328,7 +328,7 @@
           "attributes": {}
         }
       ],
-      "java-spring3-microservice": [
+      "srv-client": [
         {
           "id": "1979fe66-0b49-4962-8755-937adfa051df",
           "name": "CLIENT_ADMIN",
@@ -440,7 +440,7 @@
   "groups": [],
   "defaultRole": {
     "id": "c838f9d5-a8c3-4b6f-a24c-96e259db9121",
-    "name": "default-roles-orfosys",
+    "name": "default-roles-chaosystema",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
@@ -489,18 +489,18 @@
     {
       "id": "54c7ef1a-d698-4d4d-9cb0-f0db0551a9cb",
       "createdTimestamp": 1712166900903,
-      "username": "service-account-java-spring3-microservice",
+      "username": "service-account-srv-client",
       "enabled": true,
       "totp": false,
       "emailVerified": false,
-      "serviceAccountClientId": "java-spring3-microservice",
+      "serviceAccountClientId": "srv-client",
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
-        "default-roles-orfosys"
+        "default-roles-chaosystema"
       ],
       "clientRoles": {
-        "java-spring3-microservice": [
+        "srv-client": [
           "uma_protection"
         ]
       },
@@ -533,13 +533,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/orfosys/account/",
+      "baseUrl": "/realms/chaosystema/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/orfosys/account/*"
+        "/realms/chaosystema/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -577,13 +577,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/orfosys/account/",
+      "baseUrl": "/realms/chaosystema/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/orfosys/account/*"
+        "/realms/chaosystema/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -705,7 +705,7 @@
     },
     {
       "id": "ff218c79-85f1-40b0-811f-f75b0984f147",
-      "clientId": "java-spring3-microservice",
+      "clientId": "srv-client",
       "name": "",
       "description": "",
       "rootUrl": "http://localhost:8080/app",
@@ -807,7 +807,7 @@
         "resources": [
           {
             "name": "Default Resource",
-            "type": "urn:java-spring3-microservice:resources:default",
+            "type": "urn:srv-client:resources:default",
             "ownerManagedAccess": false,
             "attributes": {},
             "_id": "b3045091-de12-4667-a998-0a7459593233",
@@ -836,7 +836,7 @@
             "logic": "POSITIVE",
             "decisionStrategy": "UNANIMOUS",
             "config": {
-              "defaultResourceType": "urn:java-spring3-microservice:resources:default",
+              "defaultResourceType": "urn:srv-client:resources:default",
               "applyPolicies": "[\"Default Policy\"]"
             }
           }
@@ -888,13 +888,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/orfosys/console/",
+      "baseUrl": "/admin/chaosystema/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/orfosys/console/*"
+        "/admin/chaosystema/console/*"
       ],
       "webOrigins": [
         "+"
