@@ -1,6 +1,6 @@
 
 ~[BASE]~
-url http://localhost:8080/orfosys/dummy
+url http://localhost:8080/chaosystema/dummy
 method GET
 
 ~[HEADERS]~
