@@ -9,7 +9,7 @@ ext {
     bootVersion = '3.2.5'
 }
 
-group = 'com.orfosys'
+group = 'com.chaosystema'
 version = '0.0.1'
 
 java {
