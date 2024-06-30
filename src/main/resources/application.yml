@@ -14,7 +14,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/orfosys
+          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/chaosystema
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
   devtools.restart.enabled: false
 
