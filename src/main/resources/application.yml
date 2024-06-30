@@ -30,7 +30,7 @@ springdoc:
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
 
-server.servlet.context-path: /orfosys
+server.servlet.context-path: /chaosystema
 
 tracing.url: ${TRACING_HOST:http://localhost:4318}/v1/traces
 
