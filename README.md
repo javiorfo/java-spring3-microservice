@@ -35,10 +35,10 @@ Java 21, Docker, Gradle
     - Schema generation (schema.sql)
 
 ## Files
-- [Docker files](https://github.com/chaosystema/java-spring3-microservice/tree/master/docker)
-- [Kubernetes files](https://github.com/chaosystema/java-spring3-microservice/tree/master/k8s)
-- [Ship files](https://github.com/chaosystema/java-spring3-microservice/tree/master/ships)
-    - For those using Neovim and [this plugin](https://github.com/chaosystema/nvim-ship)
+- [Docker files](https://github.com/javiorfo/java-spring3-microservice/tree/master/docker)
+- [Kubernetes files](https://github.com/javiorfo/java-spring3-microservice/tree/master/k8s)
+- [Ship files](https://github.com/javiorfo/java-spring3-microservice/tree/master/ships)
+    - For those using Neovim and [this plugin](https://github.com/javiorfo/nvim-ship)
 
 ## Usage
 - Create the containers executing `./containers.sh` 
@@ -46,8 +46,9 @@ Java 21, Docker, Gradle
 - To delete all the containers: `./containers.sh d`
 
 ## MongoDB instead of Postgres
-- [MongoDB repo](https://github.com/chaosystema/java-spring3-microservice-mongo) contains version with MongoDB
+- [MongoDB repo](https://github.com/javiorfo/java-spring3-microservice-mongo) contains version with MongoDB
 ---
 
 ### Donate
-- **Bitcoin** [(QR)](https://raw.githubusercontent.com/chaosystema/img/master/crypto/bitcoin.png)  `1GqdJ63RDPE4eJKujHi166FAyigvHu5R7v`
+- **Bitcoin** [(QR)](https://raw.githubusercontent.com/javiorfo/img/master/crypto/bitcoin.png)  `1GqdJ63RDPE4eJKujHi166FAyigvHu5R7v`
+- [Paypal](https://www.paypal.com/donate/?hosted_button_id=FA7SGLSCT2H8G)
