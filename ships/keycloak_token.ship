@@ -1,6 +1,6 @@
 
 ~[BASE]~
-url http://localhost:8081/realms/chaosystema/protocol/openid-connect/token
+url http://localhost:8081/realms/javi/protocol/openid-connect/token
 method POST
 
 ~[HEADERS]~
@@ -11,7 +11,7 @@ content-type application/x-www-form-urlencoded
 grant_type password
 client_id srv-client
 client_secret RqaTlO0d2OnBbeRuImNnbLWm5yZL66Mo
-username chaosystema
-password chaosystema
+username javi
+password javi
 
 
