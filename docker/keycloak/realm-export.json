@@ -1,6 +1,6 @@
 {
   "id": "5b1be921-15e4-4abb-9770-ff34129a5991",
-  "realm": "chaosystema",
+  "realm": "javi",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -81,7 +81,7 @@
       },
       {
         "id": "c838f9d5-a8c3-4b6f-a24c-96e259db9121",
-        "name": "default-roles-chaosystema",
+        "name": "default-roles-javi",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -440,7 +440,7 @@
   "groups": [],
   "defaultRole": {
     "id": "c838f9d5-a8c3-4b6f-a24c-96e259db9121",
-    "name": "default-roles-chaosystema",
+    "name": "default-roles-javi",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
@@ -497,7 +497,7 @@
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
-        "default-roles-chaosystema"
+        "default-roles-javi"
       ],
       "clientRoles": {
         "srv-client": [
@@ -533,13 +533,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/chaosystema/account/",
+      "baseUrl": "/realms/javi/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/chaosystema/account/*"
+        "/realms/javi/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -577,13 +577,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/chaosystema/account/",
+      "baseUrl": "/realms/javi/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/chaosystema/account/*"
+        "/realms/javi/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -888,13 +888,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/chaosystema/console/",
+      "baseUrl": "/admin/javi/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/chaosystema/console/*"
+        "/admin/javi/console/*"
       ],
       "webOrigins": [
         "+"
