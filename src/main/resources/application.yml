@@ -14,7 +14,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/chaosystema
+          issuer-uri: ${KEYCLOAK_HOST:http://localhost:8081}/realms/javi
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
   devtools.restart.enabled: false
 
@@ -30,7 +30,7 @@ springdoc:
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
 
-server.servlet.context-path: /chaosystema
+server.servlet.context-path: /app
 
 tracing.url: ${TRACING_HOST:http://localhost:4318}/v1/traces
 
