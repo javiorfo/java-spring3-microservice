@@ -1,6 +1,6 @@
 
 ~[BASE]~
-url http://localhost:8080/chaosystema/dummy
+url http://localhost:8080/app/dummy
 method POST
 
 ~[HEADERS]~
