@@ -1,6 +1,6 @@
 
 ~[BASE]~
-url http://localhost:8080/chaosystema/dummy?size=3&sortBy=info
+url http://localhost:8080/app/dummy?size=3&sortBy=info
 method GET
 
 ~[HEADERS]~
