@@ -38,3 +38,6 @@ out/
 
 ### Schema SQL ###
 schema.sql
+
+### Maven ###
+/target

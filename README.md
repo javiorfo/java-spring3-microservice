@@ -1,13 +1,13 @@
 # java-spring3-microservice
 *Java archetype oriented to Microservices.*
 
-Hexagonal architecture, Java 21, Spring Boot 3, distributed tracing, log centralization and Keycloak.
+Clean architecture, Java 21, Spring Boot 3, distributed tracing, log centralization and Keycloak.
 
 ## Dependencies
-Java 21, Docker, Gradle
+Java 21, Docker, Maven
 
 ## Features
-- Hexagonal Architecture
+- Clean Architecture
     - Exception Controller
     - Custom Messages and Exceptions
     - Pagination and Ordering
@@ -42,7 +42,7 @@ Java 21, Docker, Gradle
 
 ## Usage
 - Create the containers executing `./containers.sh` 
-- Start the application with the command `gradle bootRunDev`
+- Start the application with the command `mvn spring-boot:run -Pdev`
 - To delete all the containers: `./containers.sh d`
 
 ## MongoDB instead of Postgres

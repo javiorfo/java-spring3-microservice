@@ -46,7 +46,6 @@ logstash.destination: ${LOGSTASH_HOST:http://localhost:5000}
 
 ---
 
-# Use this profile with "gradle bootRunDev"
 spring:
   config.activate.on-profile: dev
   datasource:
