@@ -2,6 +2,8 @@ package com.javi.common.exception;
 
 import org.springframework.http.HttpStatus;
 
+import com.javi.exception.BackEndException;
+
 public class NotFoundException extends BackEndException {
 
     public NotFoundException() {

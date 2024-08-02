@@ -15,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Optional;
 
 import com.javi.adapter.out.mappers.DummyMapper;
-import com.javi.common.pagination.Page;
 import com.javi.domain.model.Dummy;
+import com.javi.pagination.Page;
 
 @DataJpaTest(properties = {
         "spring.datasource.url=jdbc:h2:mem:testdb",

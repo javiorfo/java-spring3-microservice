@@ -14,10 +14,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Collections;
 
 import com.javi.application.in.DummyUseCase;
-import com.javi.common.pagination.Page;
-import com.javi.common.pagination.Paginator;
-import com.javi.common.response.PaginationResponse;
 import com.javi.domain.model.Dummy;
+import com.javi.pagination.Page;
+import com.javi.pagination.Paginator;
+import com.javi.response.PaginationResponse;
 
 @WebMvcTest(controllers = DummyController.class)
 @AutoConfigureMockMvc(addFilters = false)

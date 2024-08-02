@@ -42,6 +42,7 @@ Java 21, Docker, Maven
 
 ## Usage
 - Create the containers executing `./containers.sh` 
+- Download and compile [this library](https://github.com/javiorfo/java-spring3-microservice-lib)
 - Start the application with the command `mvn spring-boot:run -Pdev`
 - To delete all the containers: `./containers.sh d`
 

@@ -1,5 +1,0 @@
-package com.javi.application.out.interfaces;
-
-public interface DeleteByIdPersistence<T> {
-    public T delete(int id);
-}

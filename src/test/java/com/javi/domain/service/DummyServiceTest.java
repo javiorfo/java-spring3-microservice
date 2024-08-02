@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import com.javi.application.out.DummyPersistence;
-import com.javi.common.pagination.Page;
-import com.javi.common.pagination.Paginator;
-import com.javi.common.response.PaginationResponse;
 import com.javi.domain.model.Dummy;
+import com.javi.pagination.Page;
+import com.javi.pagination.Paginator;
+import com.javi.response.PaginationResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.*;

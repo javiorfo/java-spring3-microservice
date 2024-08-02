@@ -1,14 +1,14 @@
 package com.javi.domain.service;
 
-import com.javi.common.annotation.UseCase;
 import com.javi.common.exception.NotFoundException;
 import com.javi.domain.model.Dummy;
+import com.javi.pagination.Page;
+import com.javi.pagination.Paginator;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import com.javi.common.pagination.Page;
-import com.javi.common.pagination.Paginator;
+import com.javi.annotation.UseCase;
 import com.javi.application.in.DummyUseCase;
 import com.javi.application.out.DummyPersistence;
 

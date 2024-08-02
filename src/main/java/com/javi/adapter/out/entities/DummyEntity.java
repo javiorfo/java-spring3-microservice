@@ -1,6 +1,7 @@
 package com.javi.adapter.out.entities;
 
-import com.javi.adapter.out.auditory.Auditable;
+
+import com.javi.auditory.model.Auditable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

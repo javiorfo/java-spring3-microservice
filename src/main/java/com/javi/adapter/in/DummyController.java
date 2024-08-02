@@ -1,14 +1,14 @@
 package com.javi.adapter.in;
 
+import com.javi.annotation.SwaggerSecurity;
+import com.javi.annotation.WebAdapter;
 import com.javi.application.in.DummyUseCase;
 import com.javi.application.in.request.DummyRequest;
 import com.javi.application.in.response.DummyResponse;
-import com.javi.common.annotation.WebAdapter;
-import com.javi.common.pagination.Page;
-import com.javi.common.response.RestResponsePagination;
 import com.javi.domain.model.Dummy;
+import com.javi.pagination.Page;
+import com.javi.response.RestResponsePagination;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -26,7 +26,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @RestController
 @AllArgsConstructor
 @RequestMapping(value = "/dummy")
-@SecurityRequirement(name = "Keycloak")
+@SwaggerSecurity
 public class DummyController {
 
     private final DummyUseCase dummyUseCase;

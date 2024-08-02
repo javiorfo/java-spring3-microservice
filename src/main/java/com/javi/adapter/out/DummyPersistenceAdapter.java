@@ -2,13 +2,12 @@ package com.javi.adapter.out;
 
 import java.util.Optional;
 
-import com.javi.common.pagination.Page;
-import com.javi.common.pagination.Paginator;
 import com.javi.application.out.DummyPersistence;
-import com.javi.common.annotation.PersistenceAdapter;
 import com.javi.domain.model.Dummy;
-
+import com.javi.pagination.Page;
+import com.javi.pagination.Paginator;
 import com.javi.adapter.out.repositories.DummyEntityRepository;
+import com.javi.annotation.PersistenceAdapter;
 import com.javi.adapter.out.mappers.DummyMapper;
 
 import lombok.AllArgsConstructor;
