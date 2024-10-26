@@ -10,5 +10,5 @@ authorization Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJVktibk9
 
 ~[BODY]~
 {
-    "info": null
+    "info": "golang"
 }

@@ -1,6 +1,6 @@
 
 ~[BASE]~
-url http://localhost:8080/app/dummy?size=3&sortBy=info
+url http://localhost:8080/app/dummy?size=4&sortBy=id&sortOrder=desc
 method GET
 
 ~[HEADERS]~
